@@ -1,7 +1,6 @@
+require("dotenv").config();
 const yelp = require('yelp-fusion');
-
-const yelp_APIKEY = '';
-const client = yelp.client(yelp_APIKEY);
+const client = yelp.client(process.env.yelp_APIKEY);
 
 //Yelp Search
 function yelpSearch(keyword) {
@@ -15,3 +14,7 @@ function yelpSearch(keyword) {
     console.log(e);
   });
 }
+
+
+yelpSearch("burger")
+  .then((result) => console.log(result));
