@@ -7,9 +7,9 @@ function yelpSearch(keyword) {
   return client.search({
     term: keyword,
     location: 'MONTREAL, QC',
-    limit: 3,
-  }).then(response => {
-    return response.jsonBody;
+    limit: 1,
+  }).then(res => {
+    return res.jsonBody;
   }).catch(e => {
     console.log(e);
   });
