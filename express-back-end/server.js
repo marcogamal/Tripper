@@ -2,6 +2,8 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = 8080;
+const { yelpKey } = require('./config');
+const {yelpSearch} = require('./routes/api/api_requests')
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -17,3 +19,8 @@ App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
+
+
+console.log("yelpKey:", yelpKey);
+yelpSearch("burger")
+  .then((result) => console.log(result));
