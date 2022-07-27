@@ -3,11 +3,11 @@ const yelp = require('yelp-fusion');
 const client = yelp.client(yelpKey);
 
 //Yelp Search
-function yelpSearch(keyword) {
-  console.log("on yelpSearch...");
+function yelpSearch(keyword, location) {
+  console.log("on yelpSearch...", keyword);
   return client.search({
     term: keyword,
-    location: 'MONTREAL, QC',
+    location: location,
     limit: 1,
   }).then(res => {
     return res.jsonBody;
