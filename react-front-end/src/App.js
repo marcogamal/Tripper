@@ -7,7 +7,6 @@ export const App = () => {
     <div className="App">
       <h1>Tripper!</h1>
       <SearchBar/>
-      Some content here...
     </div>
   )
 }

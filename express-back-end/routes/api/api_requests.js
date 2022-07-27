@@ -4,6 +4,7 @@ const client = yelp.client(yelpKey);
 
 //Yelp Search
 function yelpSearch(keyword) {
+  console.log("on yelpSearch...");
   return client.search({
     term: keyword,
     location: 'MONTREAL, QC',

@@ -3,12 +3,15 @@ const App = Express();
 const BodyParser = require('body-parser');
 const { yelpKey } = require('./config');
 const {yelpSearch} = require('./routes/api/api_requests')
+const cors = require("cors");
 const PORT = process.env.PORT || 8080;
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
+
+App.use(cors());
 
 // Configuring Routes
 const eventsRoutes = require("./routes/events");
