@@ -25,7 +25,7 @@ module.exports = function() {
     yelpSearch(keyword, location)
       .then((data) => {
         console.log(data.businesses[0].name);
-        res.send(data.businesses[0].name)
+        res.send(data.businesses[0])
       })
       .catch((err) => {
         console.error(err);

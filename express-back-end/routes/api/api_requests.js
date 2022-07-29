@@ -4,7 +4,7 @@ const client = yelp.client(yelpKey);
 
 //Yelp Search
 function yelpSearch(keyword, location) {
-  console.log("on yelpSearch...", keyword);
+  // console.log("on yelpSearch...", keyword);
   return client.search({
     term: keyword,
     location: location,
