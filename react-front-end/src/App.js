@@ -1,12 +1,32 @@
-import './App.css';
-import React from 'react'
-import { SearchBar } from './components/SearchBar';
+import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./components/Homepage/Homepage";
+import Navbar from "./components/Navbar/Navbar";
 
-export const App = () => {
+function App() {
   return (
     <div className="App">
-      <h1>Tripper!</h1>
-      <SearchBar/>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <Homepage />
+            </>
+          }
+        />
+      </Routes>
     </div>
-  )
+  );
+
+  // return (
+  //   <div className="App">
+  //     <h1>Tripper!</h1>
+  //     <SearchBar/>
+  //   </div>
+  // )
 }
+
+export default App;
