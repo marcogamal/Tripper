@@ -16,7 +16,5 @@ export const Map = () => {
         </Popup>
       </Marker>
     </MapContainer>
-
-    // <>map</>
   )
 }

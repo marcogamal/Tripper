@@ -37,16 +37,18 @@ export const SearchBar = () => {
 
   return (
     <div>
-      <h2>SearchBar</h2>
+      <h2>Search</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="type here ..." id="keyword" value={keyword} onChange={(e) => handleChangeKeyword(e)}></input>
         <input type="text" placeholder="type here ..." id="location" value={location} onChange={(e) => handleChangeLocation(e)}></input>
         <button>Search</button>
         <h3>Results:</h3>
-        <p>Name: {result.name}</p>
+        {/* <p>Name: {result.name}</p>
         <p>Rating: {result.rating}</p>
         <p>latitude: {result.latitude}</p>
-        <p>longitude: {result.longitude}</p>
+        <p>longitude: {result.longitude}</p> */}
+
+        {}
 
       </form>
     </div>

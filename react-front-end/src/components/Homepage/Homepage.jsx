@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Map } from "../Map/Map";
+import { SearchBar } from "../SearchBar/SearchBar";
 import "./Homepage.css";
 
 export default function Homepage() {
@@ -8,7 +9,8 @@ export default function Homepage() {
 
   return (
     <div className="wrapper">
-      <div className="list">LIST OF PLACES HERE</div>
+      <SearchBar className="list"/>
+      {/* <div className="list">LIST OF PLACES HERE</div> */}
 
       <Map/>
     </div>
