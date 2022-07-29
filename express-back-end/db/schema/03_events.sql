@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS users CASCADE;
+
+CREATE TABLE events (
+  id SERIAL PRIMARY KEY NOT NULL,
+  plan_id INTEGER REFERENCES plans(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  image VARCHAR(255) NOT NULL,
+  lat DECIMAL NOT NULL,
+  lng DECIMAL NOT NULL,
+  date_time DATETIME,
+  street_address VARCHAR(255),
+  completed_at DATETIME 
+);

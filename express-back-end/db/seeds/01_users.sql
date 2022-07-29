@@ -1,1 +1,1 @@
-INSERT INTO users (name, email, password) VALUES ('Taiwo', 'taiwo@lighthouse.com', 'password');
+INSERT INTO users (name, email, password, lat, lng) VALUES ('Shakespeare', 'shakespeare@lighthouse.com', 'password', 51.50804, -0.09722);
