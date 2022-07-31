@@ -2,7 +2,6 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const { yelpKey } = require('./config');
-const {yelpSearch} = require('./routes/api/api_requests')
 const cors = require("cors");
 const PORT = process.env.PORT || 8080;
 
@@ -28,7 +27,3 @@ App.listen(PORT, () => {
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
 
-
-// console.log("yelpKey:", yelpKey);
-// yelpSearch("burger")
-//   .then((result) => console.log(result));
