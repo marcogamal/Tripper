@@ -8,16 +8,12 @@ function yelpSearch(keyword, location) {
   return client.search({
     term: keyword,
     location: location,
-    limit: 1,
+    limit: 3,
   }).then(res => {
     return res.jsonBody;
   }).catch(e => {
     console.log(e);
   });
 }
-
-// console.log("yelpKey:", yelpKey);
-// yelpSearch("burger")
-//   .then((result) => console.log(result));
 
 module.exports = { yelpSearch }
