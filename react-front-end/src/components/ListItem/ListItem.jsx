@@ -10,7 +10,7 @@ export const ListItem = (props) => {
         <>
           <p>{props.name}</p>
           <p>Rating: {props.rating} ({props.review} reviews)</p>
-          <button>Add</button>
+          <button onClick={props.addFunc(props.latitude, props.longitude, props.events)}>Add</button>
         </>      
       }
     </li>

@@ -3,7 +3,7 @@ import axios from 'axios'
 import "./SearchBar"
 import { ResultList } from '../ResultList/ResultList';
 
-export const SearchBar = () => {
+export const SearchBar = (props) => {
 
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
@@ -13,6 +13,7 @@ export const SearchBar = () => {
     const infoAll = [];
     data.forEach(item => {
       const infoItem = {
+        id: item.id,
         name: item.name,
         rating: item.rating,
         latitude: item.coordinates.latitude,
@@ -27,12 +28,7 @@ export const SearchBar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // axios.get(`http://localhost:8080/api/events/${keyword}/${location}`)
-    //   .then(res => {
-    //     resultsSet(res.data)
-    //     console.log("results:", results);
-    //   })
-    //   .catch(err => console.log(err));
+
     try {
       const resp = await axios.get(`http://localhost:8080/api/events/${keyword}/${location}`);
       resultsSet(resp.data)
@@ -59,14 +55,7 @@ export const SearchBar = () => {
         <input type="text" placeholder="type here ..." id="location" value={location} onChange={(e) => handleChangeLocation(e)}></input>
         <button>Search</button>
         <h3>Results:</h3>
-        {/* <p>Name: {result.name} </p>
-        <p>Rating: {result.rating}</p>
-        <p>Lat: {result.latitude}</p>
-        <p>Long: {result.longitude}</p> */}
-
-        {/* Loop through results. Should I save in a state to render? */}
-        <ResultList results={results}/>
-
+        <ResultList results={results} addFunc={props.addFunc} events={props.events}/>
       </form>
     </div>
   )

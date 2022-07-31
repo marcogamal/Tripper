@@ -10,9 +10,12 @@ export const ResultList = (props) => {
         props.results.map((item) => {
           return (
             <ListItem 
+              key = {item.id}
               name = {item.name}
               rating = {item.rating}
               review = {item.review}
+              addFunc = {props.addFunc}
+              events = {props.events}
             /> 
           )
         })
