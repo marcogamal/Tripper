@@ -39,9 +39,3 @@ App.listen(PORT, () => {
   );
 });
 
-<<<<<<< HEAD
-=======
-// console.log("yelpKey:", yelpKey);
-// yelpSearch("burger")
-//   .then((result) => console.log(result));
->>>>>>> master
