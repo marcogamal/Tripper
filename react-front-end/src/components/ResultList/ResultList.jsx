@@ -14,6 +14,8 @@ export const ResultList = (props) => {
               name = {item.name}
               rating = {item.rating}
               review = {item.review}
+              latitude = {item.latitude}
+              longitude = {item.longitude}
               addFunc = {props.addFunc}
               events = {props.events}
             /> 

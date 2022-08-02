@@ -23,18 +23,7 @@ module.exports = function() {
     const location = req.params.location;
 
     try {
-      const data = await getSearch(keyword, location);
-      const resultArr = [];
-      
-      // data.businesses.forEach(item => {
-      //   const itemObj = {
-      //     name: item.name,
-      //     rating: item.rating
-      //   };
-      //   resultArr.push(itemObj);
-      // });
-
-      // res.send(itemObj);
+      const data = await getSearch(keyword, location);   
 
       res.send(data.businesses)
 
