@@ -1,25 +1,17 @@
 import React from "react";
 import { Map } from "../Map/Map";
-import { SearchBar } from "../SearchBar/SearchBar";
+import { ResultList } from '../ResultList/ResultList';
 import { addToMap } from "../../helpers/MapFunctions";
 import "./Homepage.css";
 
-export default function Homepage() {
-
-  const events = [
-    {
-      latitude: 43.64446719365264,
-      longitude: -79.38649706503828,
-    },
-    {
-      latitude: 43.64220060887206,
-      longitude: -79.3864107609249,
-    }
-  ];
+export default function Homepage(props) {
+const {events, results} = props
+console.log("this is result from homepage", results)
 
   return (
     <div className="wrapper">
-      <SearchBar className="list" addFunc={addToMap} events={events}/>
+        <h3>Results:</h3>
+        <ResultList results={results} addFunc={addToMap} events={props.events}/>
       <Map events={events}/>
     </div>
   );
