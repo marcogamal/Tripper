@@ -1,16 +1,14 @@
-import React, { useCallback } from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../hooks/useAppContext';
 
 export const ListItem = (props) => {
 
-  //TODO: include button to Add event to map (save to DB)
+  const { addToMap } = useContext(AppContext);
 
   // Add marker
   const addMarker = () => {
-    const newMarker = {
-      latitude: props.latitude,
-      longitude: props.longitude,
-    };
-    props.addFunc((prevMarkers) => [...prevMarkers, newMarker]);
+
+    addToMap(props.results.id, props.results.latitude, props.results.longitude);
     console.log("adding event");
   };
 
@@ -18,9 +16,8 @@ export const ListItem = (props) => {
     <li>
       {props && 
         <>
-          <p>{props.name}</p>
-          <p>Rating: {props.rating} ({props.review} reviews)</p>
-          {/* <button onClick={() => props.addFunc(props.latitude, props.longitude, props.events)}>Add</button> */}
+          <p>{props.results.name}</p>
+          <p>Rating: {props.results.rating} ({props.results.review} reviews)</p>
           <button onClick={addMarker}>Add</button>
         </>      
       }

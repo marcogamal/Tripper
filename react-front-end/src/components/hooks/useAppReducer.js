@@ -1,24 +1,32 @@
-export const initialState = {
-  events: [
-    {
-      latitude: 43.64446719365264,
-      longitude: -79.38649706503828,
-    },
-    {
-      latitude: 43.64220060887206,
-      longitude: -79.3864107609249,
-    } 
-  ]
-}
-
 const AppReducer = (state, action) => {
 
   const {type, payload} = action;
   
   switch (type) {
     case "ADD_TO_MAP":
+      
+      console.log("ADD_TO_MAP", payload);
+
       const events = payload.events;
       return { ...state, events };
+
+    case "SET_KEYWORD":
+      
+      console.log("SET_KEYWORD", payload);
+      const keyword = payload.keyword;
+      return { keyword };
+
+    case "SET_LOCATION":
+    
+      console.log("SET_LOCATION", payload);
+      const location = payload.location;
+      return { location };
+
+      case "SET_RESULTS":
+    
+      console.log("SET_RESULTS", payload);
+      const results = payload.results;
+      return { results };
 
     default:
       throw new Error(

@@ -6,18 +6,11 @@ export const ResultList = (props) => {
     <ul>
       {
         // console.log("props:", props.result)
-        // <ListItem name="test"/>
         props.results.map((item) => {
           return (
             <ListItem 
               key = {item.id}
-              name = {item.name}
-              rating = {item.rating}
-              review = {item.review}
-              latitude = {item.latitude}
-              longitude = {item.longitude}
-              addFunc = {props.addFunc}
-              events = {props.events}
+              results={item}
             /> 
           )
         })
