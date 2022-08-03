@@ -1,10 +1,16 @@
 .navbar {
-  background-color: aquamarine;
+  background-color: rgb(142, 214, 250);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: sticky;
-  height: 20%;
+  height: 15%;
   align-items: center;
   text-align: center;
   align-content: center;
+}
+
+.navbarLogo {
+  display: flex;
+  width: 150px;
+  height: 90 px;
 }

@@ -20,6 +20,6 @@ body {
 }
 
 .leaflet-container {
-  width: 80vw;
-  height: 70vh;
+  width: 65%;
+  height: 100%;
 }

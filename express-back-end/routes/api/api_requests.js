@@ -3,12 +3,11 @@ const yelp = require('yelp-fusion');
 const client = yelp.client(yelpKey);
 
 //Yelp Search
-function yelpSearch(keyword, location) {
-  // console.log("on yelpSearch...", keyword);
+function getSearch(keyword, location) {
   return client.search({
     term: keyword,
     location: location,
-    limit: 3,
+    limit: 5,
   }).then(res => {
     return res.jsonBody;
   }).catch(e => {
@@ -16,4 +15,4 @@ function yelpSearch(keyword, location) {
   });
 }
 
-module.exports = { yelpSearch }
+module.exports = { getSearch }
