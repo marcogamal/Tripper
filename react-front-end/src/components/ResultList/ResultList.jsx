@@ -1,24 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../hooks/useAppContext'
 import { ListItem } from '../ListItem/ListItem'
 
 export const ResultList = (props) => {
+
+  const { results, addToMap } = useContext(AppContext);
+
   return (
     <ul>
       {
         // console.log("props:", props.result)
-        // <ListItem name="test"/>
         props.results.map((item) => {
           return (
             <ListItem 
               key = {item.id}
-              name = {item.name}
-              rating = {item.rating}
-              review = {item.review}
-              latitude = {item.latitude}
-              longitude = {item.longitude}
-              addFunc = {props.addFunc}
-              events = {props.events}
+              results={item}
             /> 
+            // <li>
+            //   {item && 
+            //     <>
+            //       <p>{item.name}</p>
+            //       <p>Rating: {item.rating} ({item.review} reviews)</p>
+            //       <button onClick={addToMap(item.latitude, item.longitude)}>Add</button>
+            //     </>      
+            //   }
+            // </li>
           )
         })
       }
