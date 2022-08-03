@@ -23,3 +23,37 @@ const getUserInfo = (userId) => {
 };
 
 exports.getUserInfo = getUserInfo;
+
+const getPlansForUser = (userId) => {
+  let queryString = `SELECT * FROM plans
+  WHERE plans.id = $1`;
+  let queryParams = [userId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getPlansForUser = getPlansForUser;
+
+const getEventsForPlan = (planId) => {
+  let queryString = `SELECT * FROM events
+  WHERE events.plan_id = $1`;
+  let queryParams = [planId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getEventsForPlan = getEventsForPlan;

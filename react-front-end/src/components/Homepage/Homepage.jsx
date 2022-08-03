@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useApp from "../hooks/useAppContext";
 import { Map } from "../Map/Map";
 import { SearchBar } from "../SearchBar/SearchBar";
 import "./Homepage.css";
+import Axios from "axios";
 
 export default function Homepage() {
+  useEffect(() => {
+    Axios.get("/api/users/").then((res) => {
+      console.log(res);
+    });
+  });
+
+  console.log("test");
 
   const [events, setEvents] = useState([
     {
@@ -14,7 +22,7 @@ export default function Homepage() {
     {
       latitude: 43.64220060887206,
       longitude: -79.3864107609249,
-    }    
+    },
   ]);
 
   // const events = [
@@ -25,7 +33,7 @@ export default function Homepage() {
   //   {
   //     latitude: 43.64220060887206,
   //     longitude: -79.3864107609249,
-  //   }  
+  //   }
   // ]
 
   // const { events } = useApp;

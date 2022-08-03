@@ -1,0 +1,1 @@
+INSERT INTO plans (user_id, title, ordering) VALUES (1, 'Road Trip', 1);
