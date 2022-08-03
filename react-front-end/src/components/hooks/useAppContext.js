@@ -17,13 +17,13 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const value = {
+  const data = {
     events: state.events,
     addToMap,   
   };
 
   // eslint-disable-next-line react/react-in-jsx-scope
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return <AppContext.Provider data={data}>{children}</AppContext.Provider>;
 };
 
 const useApp = () => {

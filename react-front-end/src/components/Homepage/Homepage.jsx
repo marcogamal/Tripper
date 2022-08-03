@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import useApp from "../hooks/useAppContext";
 import { Map } from "../Map/Map";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { addToMap } from "../../helpers/MapFunctions";
 import "./Homepage.css";
 
 export default function Homepage() {
@@ -28,10 +28,13 @@ export default function Homepage() {
   //   }  
   // ]
 
+  // const { events } = useApp;
+  // console.log(events);
   return (
     <div className="wrapper">
       <SearchBar className="list" addFunc={setEvents} events={events}/>
       <Map markers={events} addMarkers={setEvents}/>
+      
     </div>
   );
 }
