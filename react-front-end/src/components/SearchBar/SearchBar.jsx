@@ -8,7 +8,7 @@ export const SearchBar = (props) => {
   const [keyword, setKeyword] = useState("");
   const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
-  // const { keyword, setKeyword, location, setLocation, results, setResults } = useContext(AppContext);
+  // const { results, setResults } = useContext(AppContext);
 
   const resultsSet = (data) => {
     const infoAll = [];
@@ -24,8 +24,11 @@ export const SearchBar = (props) => {
       infoAll.push(infoItem);
     });
     // console.log("infoAll", infoAll);
-    setResults(prev => infoAll);
-    // setResults(infoAll);
+    
+    // setResults(prev => infoAll);
+    
+    setResults(infoAll);
+    console.log(results);
   };
 
   const handleSubmit = async (e) => {

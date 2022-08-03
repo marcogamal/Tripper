@@ -15,8 +15,8 @@ const initialState = {
       longitude: -79.3864107609249,
     } 
   ],
-  keyword: "",
-  location: "Toronto",
+  // keyword: "",
+  // location: "Toronto",
   results: [],
 }
 
@@ -43,32 +43,33 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const setKeyword = (string) => {
-    console.log("setKeyword");
-    dispatch({
-      type: "SET_KEYWORD",
-      payload: {
-        keyword: string
-      }
-    })
-  }
+  // const setKeyword = (string) => {
+  //   console.log("setKeyword");
+  //   dispatch({
+  //     type: "SET_KEYWORD",
+  //     payload: {
+  //       keyword: string
+  //     }
+  //   })
+  // }
 
-  const setLocation = (string) => {
-    console.log("setLocation");
-    dispatch({
-      type: "SET_LOCATION",
-      payload: {
-        location: string
-      }
-    })
-  }
+  // const setLocation = (string) => {
+  //   console.log("setLocation");
+  //   dispatch({
+  //     type: "SET_LOCATION",
+  //     payload: {
+  //       location: string
+  //     }
+  //   })
+  // }
 
   const setResults = (data) => {
     console.log("addResults: ", data);
+    state.results = data;
     dispatch({
       type: "SET_RESULTS",
       payload: {
-        results: data
+        results: state.results
       }
     });
 
@@ -77,10 +78,10 @@ export const AppProvider = ({ children }) => {
   const value = {
     events: state.events,
     addToMap,
-    keyword: state.keyword,
-    setKeyword,
-    location: state.location,
-    setLocation,
+    // keyword: state.keyword,
+    // setKeyword,
+    // location: state.location,
+    // setLocation,
     results: state.results,
     setResults,
   };
