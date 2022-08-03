@@ -22,7 +22,7 @@ App.use("/api/events", eventsRoutes());
 
 const usersRoute = require("./routes/databaseRequests");
 usersRoute(expressRouter, database);
-App.use("/users", expressRouter);
+App.use("/api/users", expressRouter);
 
 // Sample GET route
 App.get("/api/data", (req, res) =>
