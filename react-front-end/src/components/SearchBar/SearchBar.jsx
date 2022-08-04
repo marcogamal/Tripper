@@ -18,6 +18,7 @@ export const SearchBar = () => {
         latitude: item.coordinates.latitude,
         longitude: item.coordinates.longitude,
         review: item.review_count,
+        image_url: item.image_url,
       };
       infoAll.push(infoItem);
     });

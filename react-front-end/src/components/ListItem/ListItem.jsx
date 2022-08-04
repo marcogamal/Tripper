@@ -24,6 +24,7 @@ export const ListItem = (props) => {
           <p>{props.results.name}</p>
           <p>Rating: {props.results.rating} ({props.results.review} reviews)</p>
           <button onClick={addMarker}>Add</button>
+          <img src={props.results.image_url} alt="" height="150px" width="150px" />
         </>      
       }
     </li>
