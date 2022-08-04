@@ -6,11 +6,13 @@ const initialState = {
   events: [
     {
       id: 1,
+      name: "CN Tower",
       latitude: 43.64446719365264,
       longitude: -79.38649706503828,
     },
     {
       id: 2,
+      name: "Ripley's Aquarium",
       latitude: 43.64220060887206,
       longitude: -79.3864107609249,
     } 
@@ -25,13 +27,9 @@ export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  const addToMap = (id, lat, lng) => {
-    console.log("state.events", state);
-    const updatedMap = state.events.concat({
-      id,
-      latitude: lat,
-      longitude: lng,
-    });
+  const addToMap = (event) => {
+    console.log("event AppProvider", event);
+    const updatedMap = state.events.concat(event);
 
     console.log("addToMap AppProvider: ", updatedMap);
     
