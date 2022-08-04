@@ -1,18 +1,21 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LayerGroup, Marker } from 'react-leaflet';
 import { AppContext } from '../hooks/useAppContext';
 
 export const MapLayer = () => {
   
-    const { events } = useContext(AppContext);
+  const { events } = useContext(AppContext);
+  const [markers, setMarkers] = useState([]);
   
       useEffect(() => {
       console.log("rendering map", events);
+      setMarkers(events);
     }, [events]);    
      
     return (
       <LayerGroup>
-        {events.map((ele) => {
+        
+        {markers.map((ele) => {
           return (
             <Marker 
               key={ele.id}
