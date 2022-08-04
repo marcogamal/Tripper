@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 import { MapLayer } from '../MapLayer/MapLayer';
 
 export const Map = () => {

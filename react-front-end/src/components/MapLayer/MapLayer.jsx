@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { LayerGroup, Marker, Popup } from 'react-leaflet';
 import { AppContext } from '../hooks/useAppContext';
 
