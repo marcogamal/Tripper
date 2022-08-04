@@ -26,7 +26,7 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const addToMap = (id, lat, lng) => {
-
+    console.log("state.events", state);
     const updatedMap = state.events.concat({
       id,
       latitude: lat,
@@ -42,6 +42,18 @@ export const AppProvider = ({ children }) => {
       }
     });
   };
+
+  const setResults = (data) => {
+    console.log("addResults AppProvider: ", data);
+    
+    dispatch({
+      type: "SET_RESULTS",
+      payload: {
+        results: data
+      }
+    });
+
+  }
 
   // const setKeyword = (string) => {
   //   console.log("setKeyword");
@@ -62,18 +74,6 @@ export const AppProvider = ({ children }) => {
   //     }
   //   })
   // }
-
-  const setResults = (data) => {
-    console.log("addResults: ", data);
-    state.results = data;
-    dispatch({
-      type: "SET_RESULTS",
-      payload: {
-        results: state.results
-      }
-    });
-
-  }
 
   const value = {
     events: state.events,

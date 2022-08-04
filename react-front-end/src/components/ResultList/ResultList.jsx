@@ -1,10 +1,7 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../hooks/useAppContext'
+import React from 'react'
 import { ListItem } from '../ListItem/ListItem'
 
 export const ResultList = (props) => {
-
-  const { results, addToMap } = useContext(AppContext);
 
   return (
     <ul>
@@ -16,16 +13,7 @@ export const ResultList = (props) => {
               key = {item.id}
               results={item}
             /> 
-            // <li>
-            //   {item && 
-            //     <>
-            //       <p>{item.name}</p>
-            //       <p>Rating: {item.rating} ({item.review} reviews)</p>
-            //       <button onClick={addToMap(item.latitude, item.longitude)}>Add</button>
-            //     </>      
-            //   }
-            // </li>
-          )
+         )
         })
       }
     </ul>

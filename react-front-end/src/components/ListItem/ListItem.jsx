@@ -9,7 +9,7 @@ export const ListItem = (props) => {
   const addMarker = () => {
 
     addToMap(props.results.id, props.results.latitude, props.results.longitude);
-    console.log("adding event");
+    console.log("adding event", props.results);
   };
 
   return (

@@ -5,11 +5,20 @@ const AppReducer = (state, action) => {
   switch (type) {
     case "ADD_TO_MAP":
       
-      console.log("ADD_TO_MAP", payload);
+      console.log("ADD_TO_MAP", payload.events);
 
       const events = payload.events;
       return { ...state, events };
 
+    case "SET_RESULTS":
+    
+      console.log("SET_RESULTS", payload);
+
+      const results = payload.results;
+      console.log("results: ", results);
+      return { ...state, results };
+
+    
     // case "SET_KEYWORD":
       
     //   console.log("SET_KEYWORD", payload);
@@ -21,12 +30,6 @@ const AppReducer = (state, action) => {
     //   console.log("SET_LOCATION", payload);
     //   const location = payload.location;
     //   return { location };
-
-      case "SET_RESULTS":
-    
-      console.log("SET_RESULTS", payload);
-      const results = payload.results;
-      return { results };
 
     default:
       throw new Error(

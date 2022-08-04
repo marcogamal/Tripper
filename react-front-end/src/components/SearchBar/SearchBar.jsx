@@ -4,11 +4,10 @@ import "./SearchBar";
 import { ResultList } from "../ResultList/ResultList";
 import { AppContext } from "../hooks/useAppContext";
 
-export const SearchBar = (props) => {
+export const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState([]);
   const [location, setLocation] = useState("");
-  // const { results, setResults } = useContext(AppContext);
+  const { results, setResults } = useContext(AppContext);
 
   const resultsSet = (data) => {
     const infoAll = [];
@@ -23,12 +22,10 @@ export const SearchBar = (props) => {
       };
       infoAll.push(infoItem);
     });
-    // console.log("infoAll", infoAll);
-    
-    // setResults(prev => infoAll);
+    console.log("infoAll", infoAll);
     
     setResults(infoAll);
-    console.log(results);
+    
   };
 
   const handleSubmit = async (e) => {
@@ -37,7 +34,7 @@ export const SearchBar = (props) => {
     try {
       const resp = await axios.get(`/api/events/${keyword}/${location}`);
       resultsSet(resp.data);
-      // console.log("results:", results);
+      console.log("results:", results);
     } catch (error) {
       console.log(error);
     }
