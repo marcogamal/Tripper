@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Map } from "../Map/Map";
-import { SearchBar } from "../SearchBar/SearchBar";
 import "./Homepage.css";
-import Axios from "axios";
+import { ResultList } from "../ResultList/ResultList";
 
 export default function Homepage() {
-  useEffect(() => {
-    Axios.get("/api/users/").then((res) => {
-      // console.log("api/users", res);
-    });
-  });
- 
   return (
     <div className="wrapper">
-      <SearchBar className="list" />
+      <ResultList />
       <Map />
       
     </div>

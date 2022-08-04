@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./SearchBar";
-import { ResultList } from "../ResultList/ResultList";
 import { AppContext } from "../hooks/useAppContext";
 
 export const SearchBar = () => {
@@ -67,10 +66,7 @@ export const SearchBar = () => {
           onChange={(e) => handleChangeLocation(e)}
         ></input>
         <button>Search</button>
-        <h3>Results:</h3>
-        <ResultList
-          results={results}
-        />
+
       </form>
     </div>
   );
