@@ -1,34 +1,24 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { LayerGroup, Marker, useMap } from 'react-leaflet';
+import React, { useContext, useEffect, useState } from 'react'
+import { LayerGroup, Marker } from 'react-leaflet';
+import { AppContext } from '../hooks/useAppContext';
 
-export const MapLayer = ({ markers, addMarkers}) => {
+export const MapLayer = () => {
   
-    // const defaultMarkers = props.defaultMarkers;
-    // const [markers, setMarkers] = useState(defaultMarkers);
-    const map = useMap();
+  const { events } = useContext(AppContext);
+  const [markers, setMarkers] = useState([]);
   
-    const addMarker = useCallback((e) => {
-      const newMarker = {
-        latitude: e.latlng.lat,
-        longitude: e.latlng.lng,
-      };
-      addMarkers((prevMarkers) => [...prevMarkers, newMarker]);
-    }, []);
-
-  
-    useEffect(() => {
-      // map.on('click',addMarker)
-      addMarkers(markers);  
-      console.log("markers", markers);
-    }, [addMarker]);
-    
+      useEffect(() => {
+      console.log("rendering map", events);
+      setMarkers(events);
+    }, [events]);    
      
     return (
       <LayerGroup>
+        
         {markers.map((ele) => {
           return (
             <Marker 
-              id={ele.id}
+              key={ele.id}
               position={[ele.latitude, ele.longitude]}>
             </Marker>
           );
