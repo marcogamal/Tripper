@@ -6,7 +6,7 @@ import { AppContext } from "../hooks/useAppContext";
 export const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
   const [location, setLocation] = useState("");
-  const { results, setResults } = useContext(AppContext);
+  const { setResults } = useContext(AppContext);
 
   const resultsSet = (data) => {
     const infoAll = [];
@@ -18,10 +18,11 @@ export const SearchBar = () => {
         latitude: item.coordinates.latitude,
         longitude: item.coordinates.longitude,
         review: item.review_count,
+        image_url: item.image_url,
       };
       infoAll.push(infoItem);
     });
-    console.log("infoAll", infoAll);
+    // console.log("infoAll", infoAll);
     
     setResults(infoAll);
     
@@ -33,7 +34,7 @@ export const SearchBar = () => {
     try {
       const resp = await axios.get(`/api/events/${keyword}/${location}`);
       resultsSet(resp.data);
-      console.log("results:", results);
+      // console.log("results:", results);
     } catch (error) {
       console.log(error);
     }
@@ -53,14 +54,14 @@ export const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder=""
+          placeholder="Keyword..."
           id="keyword"
           value={keyword}
           onChange={(e) => handleChangeKeyword(e)}
         ></input>
         <input
           type="text"
-          placeholder=""
+          placeholder="Location..."
           id="location"
           value={location}
           onChange={(e) => handleChangeLocation(e)}
