@@ -17,8 +17,6 @@ const initialState = {
       longitude: -79.3864107609249,
     } 
   ],
-  // keyword: "",
-  // location: "Toronto",
   results: [],
 }
 
@@ -28,10 +26,9 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const addToMap = (event) => {
-    console.log("event AppProvider", event);
+    
     const updatedMap = state.events.concat(event);
-
-    console.log("addToMap AppProvider: ", updatedMap);
+    // console.log("addToMap: ", updatedMap);
     
     dispatch({
       type: "ADD_TO_MAP",
@@ -41,8 +38,21 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const deleteFromMap = (id) => {
+    
+    const updatedMap = state.events.filter(el => el.id !== id);
+    console.log("deleteFromMap: ", updatedMap);
+    
+    dispatch({
+      type: "DELETE_FROM_MAP",
+      payload: {
+        events: updatedMap
+      }
+    });
+  };  
+
   const setResults = (data) => {
-    console.log("addResults AppProvider: ", data);
+    // console.log("addResults AppProvider: ", data);
     
     dispatch({
       type: "SET_RESULTS",
@@ -53,38 +63,13 @@ export const AppProvider = ({ children }) => {
 
   }
 
-  // const setKeyword = (string) => {
-  //   console.log("setKeyword");
-  //   dispatch({
-  //     type: "SET_KEYWORD",
-  //     payload: {
-  //       keyword: string
-  //     }
-  //   })
-  // }
-
-  // const setLocation = (string) => {
-  //   console.log("setLocation");
-  //   dispatch({
-  //     type: "SET_LOCATION",
-  //     payload: {
-  //       location: string
-  //     }
-  //   })
-  // }
-
   const value = {
     events: state.events,
     addToMap,
-    // keyword: state.keyword,
-    // setKeyword,
-    // location: state.location,
-    // setLocation,
+    deleteFromMap,
     results: state.results,
     setResults,
   };
-
-  // console.log("appProvider", value.events);
 
   return  (
     <AppContext.Provider value={value}>

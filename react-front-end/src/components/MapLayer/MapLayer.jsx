@@ -4,12 +4,14 @@ import { AppContext } from '../hooks/useAppContext';
 
 export const MapLayer = () => {
   
-  const { events } = useContext(AppContext);
+  const { events, deleteFromMap } = useContext(AppContext);
     
   useEffect(() => {
   console.log("rendering map", events);
 
-  }, [events]);    
+  }, [events]);
+
+
      
   return (
     <LayerGroup>
@@ -23,7 +25,7 @@ export const MapLayer = () => {
                 {ele.name}
                 <br/>
                 <br/>
-                <button>Delete</button>
+                <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
               </Popup>
           </Marker>
         );
