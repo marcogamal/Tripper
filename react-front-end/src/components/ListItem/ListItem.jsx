@@ -20,12 +20,12 @@ export const ListItem = (props) => {
   return (
     <li>
       {props && 
-        <>
+        <div>
           <p>{props.results.name}</p>
           <p>Rating: {props.results.rating} ({props.results.review} reviews)</p>
-          <button onClick={addMarker}>Add</button>
           <img src={props.results.image_url} alt="" height="150px" width="150px" />
-        </>      
+          <button onClick={addMarker}>Add</button>
+        </div>      
       }
     </li>
   )

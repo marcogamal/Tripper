@@ -7,8 +7,8 @@ export const ResultList = () => {
   const { results } = useContext(AppContext);
 
   return (
-    <>
-      <h3>Results:</h3>
+    <div className="results-wrapper">
+      {results.length > 0 && <h3>Results:</h3>}
       <ul>
         {
           // console.log("props:", props.result)
@@ -22,6 +22,6 @@ export const ResultList = () => {
           })
         }
       </ul>
-    </>
+    </div>
   )
 }
