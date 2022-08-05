@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS events CASCADE;
 
 CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE events (
   image VARCHAR(255) NOT NULL,
   lat DECIMAL NOT NULL,
   lng DECIMAL NOT NULL,
-  date_time DATETIME,
+  date_time TIMESTAMP,
   street_address VARCHAR(255),
-  completed_at DATETIME 
+  completed_at TIMESTAMP 
 );

@@ -1,7 +1,8 @@
 import React from 'react'
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapLayer } from '../MapLayer/MapLayer';
 
-export const Map = (props) => {
+export const Map = () => {
 
   return (
     <MapContainer center={[43.64446719365264, -79.38649706503828]} zoom={13} scrollWheelZoom={true}>
@@ -10,12 +11,8 @@ export const Map = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-    {props.events.map(ele => (
+      <MapLayer />
 
-      <Marker position={[ele.latitude, ele.longitude]}>
-      </Marker>
-      
-    ))}
 
     </MapContainer>
   )

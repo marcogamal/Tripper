@@ -1,29 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../hooks/useAppContext'
 import { ListItem } from '../ListItem/ListItem'
 
-export const ResultList = (props) => {
-  const {results} = props
-  console.log("result from ResultList", results)
+export const ResultList = () => {
+
+  const { results } = useContext(AppContext);
+
   return (
-    <ul>
-      {
-        // console.log("props:", props.result)
-        // <ListItem name="test"/>
-        results.map((item) => {
-          return (
-            <ListItem 
-              key = {item.id}
-              name = {item.name}
-              rating = {item.rating}
-              review = {item.review}
-              addFunc = {props.addFunc}
-              latitude = {item.latitude}
-              longitude = {item.longitude}
-              events = {props.events}
-            /> 
+    <div className="results-wrapper">
+      {results.length > 0 && <h3>Results:</h3>}
+      <ul>
+        {
+          // console.log("props:", props.result)
+          results.map((item) => {
+            return (
+              <ListItem 
+                key = {item.id}
+                results={item}
+              /> 
           )
-        })
-      }
-    </ul>
+          })
+        }
+      </ul>
+    </div>
   )
 }
