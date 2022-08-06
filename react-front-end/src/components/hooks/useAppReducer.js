@@ -8,7 +8,8 @@ const AppReducer = (state, action) => {
       console.log("ADD_TO_MAP: ", payload.events);
 
       let events = payload.events;
-      return { ...state, events };
+      let results = payload.results;
+      return { ...state, events, results };
 
     case "DELETE_FROM_MAP":
       
@@ -21,7 +22,7 @@ const AppReducer = (state, action) => {
     
       console.log("SET_RESULTS: ", payload);
 
-      const results = payload.results;
+      results = payload.results;
       return { ...state, results };
 
     case "UPDATE_ICON_COLOR":

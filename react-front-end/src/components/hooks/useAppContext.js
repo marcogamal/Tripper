@@ -3,6 +3,7 @@ import AppReducer from './useAppReducer';
 
 
 const initialState = {
+  //Load events where user_id = 1 and plans[0] (initial)
   events: [
     {
       id: "1",
@@ -20,6 +21,7 @@ const initialState = {
     } 
   ],
   results: [],
+  //Load plans where user_id = 1
   plans: [
     {
       id: 1,
@@ -40,12 +42,14 @@ export const AppProvider = ({ children }) => {
   const addToMap = (event) => {
     
     const updatedMap = state.events.concat(event);
-    // console.log("addToMap: ", updatedMap);
+    
+    const updatedResults = state.results.filter((res) => event.id !== res.id)
     
     dispatch({
       type: "ADD_TO_MAP",
       payload: {
-        events: updatedMap
+        events: updatedMap,
+        results: updatedResults
       }
     });
   };
