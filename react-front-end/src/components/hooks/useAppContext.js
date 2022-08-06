@@ -20,6 +20,16 @@ const initialState = {
     } 
   ],
   results: [],
+  plans: [
+    {
+      id: 1,
+      name: "Day in Toronto",
+    },
+    {
+      id: 2,
+      name: "Fun Weekend",
+    }
+  ],
 }
 
 export const AppContext = createContext(initialState);
@@ -65,16 +75,9 @@ export const AppProvider = ({ children }) => {
   }
 
   const changeIconColor  = (id) => {
-    const index = state.events.find((idSearch, indexSearch) => {
-      if(idSearch === id) {
-        return indexSearch;
-      }
-      return null;
-    })
-    
-    // state.events(index).done = !state.events(index).done
-    // console.log(state.events[index].done);
-    console.log(state.events[0].done);
+    const index = state.events.findIndex(ele => ele.id === id);
+    //Mark as done/undone
+    state.events[index].done = !state.events[index].done
 
     dispatch({
       type: "UPDATE_ICON_COLOR",
@@ -91,6 +94,7 @@ export const AppProvider = ({ children }) => {
     results: state.results,
     setResults,
     changeIconColor,
+    plans: state.plans,
   };
 
   return  (

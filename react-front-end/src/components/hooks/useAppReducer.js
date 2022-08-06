@@ -22,17 +22,14 @@ const AppReducer = (state, action) => {
       console.log("SET_RESULTS: ", payload);
 
       const results = payload.results;
-      // console.log("results: ", results);
       return { ...state, results };
 
     case "UPDATE_ICON_COLOR":
       
-      console.log("UPDATE_ICON_COLOR: ", payload);
+      console.log("UPDATE_ICON_COLOR: ", payload.events);
 
-      events = payload.events;
-      
+      events = payload.events;    
       return { ...state, events };
-
 
     default:
       throw new Error(
