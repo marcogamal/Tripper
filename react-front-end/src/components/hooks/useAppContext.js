@@ -5,16 +5,18 @@ import AppReducer from './useAppReducer';
 const initialState = {
   events: [
     {
-      id: 1,
+      id: "1",
       name: "CN Tower",
       latitude: 43.64446719365264,
       longitude: -79.38649706503828,
+      done: false,
     },
     {
-      id: 2,
+      id: "2",
       name: "Ripley's Aquarium",
       latitude: 43.64220060887206,
       longitude: -79.3864107609249,
+      done: true,
     } 
   ],
   results: [],
@@ -60,7 +62,26 @@ export const AppProvider = ({ children }) => {
         results: data
       }
     });
+  }
 
+  const changeIconColor  = (id) => {
+    const index = state.events.find((idSearch, indexSearch) => {
+      if(idSearch === id) {
+        return indexSearch;
+      }
+      return null;
+    })
+    
+    // state.events(index).done = !state.events(index).done
+    // console.log(state.events[index].done);
+    console.log(state.events[0].done);
+
+    dispatch({
+      type: "UPDATE_ICON_COLOR",
+      payload: {
+        events: state.events
+      }
+    })
   }
 
   const value = {
@@ -69,6 +90,7 @@ export const AppProvider = ({ children }) => {
     deleteFromMap,
     results: state.results,
     setResults,
+    changeIconColor,
   };
 
   return  (

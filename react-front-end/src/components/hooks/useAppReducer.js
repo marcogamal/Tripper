@@ -25,6 +25,15 @@ const AppReducer = (state, action) => {
       // console.log("results: ", results);
       return { ...state, results };
 
+    case "UPDATE_ICON_COLOR":
+      
+      console.log("UPDATE_ICON_COLOR: ", payload);
+
+      events = payload.events;
+      
+      return { ...state, events };
+
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`

@@ -12,10 +12,11 @@ export const ListEvents = () => {
         {
           events.map((item) => {
             return (
-              <div>
+              
+              <li>
                 <h5>{item.name}</h5>
                 <p></p>
-              </div>
+              </li>
           )
           })
         }

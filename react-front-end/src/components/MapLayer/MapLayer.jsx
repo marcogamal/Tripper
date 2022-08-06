@@ -5,7 +5,7 @@ import { AppContext } from '../hooks/useAppContext';
 
 export const MapLayer = () => {
   
-  const { events, deleteFromMap } = useContext(AppContext);
+  const { events, deleteFromMap, changeIconColor } = useContext(AppContext);
   const LeafIcon = L.Icon.extend({
     options: {}
   });
@@ -55,7 +55,7 @@ export const MapLayer = () => {
                   <br/>
                   <br/>
                   <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
-                  {/* <button onClick={() => changeIconColor(icon)}>Done</button> */}
+                  <button onClick={() => changeIconColor(ele.id)}>Uncheck</button>
                 </Popup>
               </Marker>             
             :
@@ -68,7 +68,7 @@ export const MapLayer = () => {
                     <br/>
                     <br/>
                     <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
-                    {/* <button onClick={() => changeIconColor(icon)}>Done</button> */}
+                    <button onClick={() => changeIconColor(ele.id)}>Done</button>
                   </Popup>
               </Marker>   
             }
