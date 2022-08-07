@@ -62,6 +62,19 @@ export const AppProvider = ({ children }) => {
     });
   }, []);
 
+  const changePlan = (planId) => {
+    Axios.get(`/api/users/plans/${planId}`).then((res) => {
+      dispatch({
+        type: "SET_EVENTS",
+        payload: {
+          events: res.data.event,
+        },
+      });
+      console.log(res);
+      console.log(planId);
+    });
+  };
+
   const addToMap = (event) => {
     const updatedMap = state.events.concat(event);
 
@@ -124,6 +137,7 @@ export const AppProvider = ({ children }) => {
 
   const value = {
     events: state.events,
+    changePlan,
     addToMap,
     deleteFromMap,
     results: state.results,

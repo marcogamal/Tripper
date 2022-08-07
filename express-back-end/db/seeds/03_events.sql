@@ -1,2 +1,3 @@
 INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address) VALUES ('1', 1, 'CN Tower', 'Tower', 'https://upload.wikimedia.org/wikipedia/commons/9/96/Toronto_-_ON_-_Toronto_Harbourfront7.jpg', 43.64446719365264, -79.38649706503828, NOW(), '290 Bremner Blvd');
 INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address) VALUES ('2', 1, 'Ripley''s Aquarium', 'Aquarium', '', 43.64220060887206, -79.3864107609249, NOW(), '288 Bremner Blvd');
+INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address) VALUES ('3', 2, 'Ripley''s Aquarium', 'Aquarium', '', 43.64220060887206, -79.3864107609249, NOW(), '288 Bremner Blvd');
