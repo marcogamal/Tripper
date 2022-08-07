@@ -38,4 +38,15 @@ module.exports = function (router, database) {
         res.send(e);
       });
   });
+
+  // Add New Event to Plan
+  router.post("/plans/:planId", (req, res) => {
+    let planId = req.params.planId;
+    database
+      .addEventToPlan(planId, req.body)
+      .then((event) => res.send({ event }))
+      .catch((e) => {
+        res.send(e);
+      });
+  });
 };
