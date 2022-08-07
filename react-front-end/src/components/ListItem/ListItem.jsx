@@ -12,7 +12,8 @@ export const ListItem = (props) => {
       id: props.results.id, 
       name: props.results.name,
       latitude: props.results.latitude, 
-      longitude: props.results.longitude
+      longitude: props.results.longitude,
+      done: false,
     });
     console.log("adding event", props.results);
   };
