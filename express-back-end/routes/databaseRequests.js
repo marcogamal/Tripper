@@ -42,11 +42,21 @@ module.exports = function (router, database) {
   // Add New Event to Plan
   router.post("/plans/:planId", (req, res) => {
     let planId = req.params.planId;
+    const newEvent = req.body.event;
     database
-      .addEventToPlan(planId, req.body)
+      .addEventToPlan(planId, req.body.event)
       .then((event) => res.send({ event }))
       .catch((e) => {
         res.send(e);
       });
+  });
+
+  // Remove an Event from the database
+  router.delete("/api/users/events/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+
+    database.deleteEvent(eventId).then(() => {
+      console.log("Event deleted!");
+    });
   });
 };
