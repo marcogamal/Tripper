@@ -39,22 +39,28 @@ export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // useEffect(() => {
-  //   Axios.get("/api/users/plans/1").then((res) => {
-  //     // console.log(res.data.event);
-  //     dispatch({
-  //       type: "SET_EVENTS",
-  //       payload: {
-  //         events: res.data.event,
-  //       },
-  //     });
-  //   });
-  // });
+  useEffect(() => {
+    Axios.get("/api/users/plans/1").then((res) => {
+      // console.log(res.data.event);
+      dispatch({
+        type: "SET_EVENTS",
+        payload: {
+          events: res.data.event,
+        },
+      });
+    });
+  }, []);
 
   const addToMap = (event) => {
     const updatedMap = state.events.concat(event);
 
     const updatedResults = state.results.filter((res) => event.id !== res.id);
+
+    console.log("EVENT ADDED: ", event);
+
+    Axios.put("/api/users/plans/1", { event }).then((res) => {
+      console.log(res);
+    });
 
     dispatch({
       type: "ADD_TO_MAP",
@@ -68,6 +74,10 @@ export const AppProvider = ({ children }) => {
   const deleteFromMap = (id) => {
     const updatedMap = state.events.filter((el) => el.id !== id);
     console.log("deleteFromMap: ", updatedMap);
+
+    Axios.delete(`/api/users/events/${id}`).then(() => {
+      console.log("Cancelled.");
+    });
 
     dispatch({
       type: "DELETE_FROM_MAP",
