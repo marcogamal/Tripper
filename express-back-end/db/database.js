@@ -117,3 +117,21 @@ const getEventById = (eventId) => {
 };
 
 exports.getEventById = getEventById;
+
+const markEventDone = (eventId) => {
+  let queryString = `UPDATE events 
+  SET done = NOT done
+  WHERE id = $1;`;
+  let queryParams = [eventId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.markEventDone = markEventDone;

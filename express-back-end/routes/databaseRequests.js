@@ -69,4 +69,12 @@ module.exports = function (router, database) {
       res.send({ event });
     });
   });
+
+  router.put("/events/done/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+
+    database.markEventDone(eventId).then((event) => {
+      res.send({ event });
+    });
+  });
 };

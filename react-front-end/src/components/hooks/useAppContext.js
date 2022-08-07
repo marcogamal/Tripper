@@ -132,6 +132,10 @@ export const AppProvider = ({ children }) => {
     //Mark as done/undone
     state.events[index].done = !state.events[index].done;
 
+    Axios.put(`/api/users/events/done/${id}`).then(() => {
+      console.log("Marked as done!");
+    });
+
     dispatch({
       type: "UPDATE_ICON_COLOR",
       payload: {
