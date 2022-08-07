@@ -32,6 +32,7 @@ const initialState = {
       name: "Fun Weekend",
     },
   ],
+  selectedPlan: null,
 };
 
 export const AppContext = createContext(initialState);
@@ -65,9 +66,10 @@ export const AppProvider = ({ children }) => {
   const changePlan = (planId) => {
     Axios.get(`/api/users/plans/${planId}`).then((res) => {
       dispatch({
-        type: "SET_EVENTS",
+        type: "CHANGE_PLAN",
         payload: {
           events: res.data.event,
+          selectedPlan: planId,
         },
       });
       console.log(res);
@@ -80,9 +82,11 @@ export const AppProvider = ({ children }) => {
 
     const updatedResults = state.results.filter((res) => event.id !== res.id);
 
+    const selectedPlan = state.selectedPlan;
+
     console.log("EVENT ADDED: ", event);
 
-    Axios.put("/api/users/plans/1", { event }).then((res) => {
+    Axios.put(`/api/users/plans/${selectedPlan}`, { event }).then((res) => {
       console.log(res);
     });
 
