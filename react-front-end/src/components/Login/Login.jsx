@@ -24,8 +24,8 @@ export default function Login({formData, setFormData, username, password}) {
       password: "pass1",
     },
     {
-      username: "user2",
-      password: "pass2",
+      username: "lighthouse",
+      password: "labs",
     },
   ];
 

@@ -5,7 +5,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Navbar from "./components/Navbar/Navbar";
 import { AppProvider } from "./components/hooks/useAppContext";
 import Login from "./components/Login/Login"
-
+import { Profile } from "./components/Profile/Profile";
 function App() {
   const [formData, setFormData] = useState({
     username: "",
@@ -33,6 +33,15 @@ function App() {
               <>
               <Navbar />
               <Login formData={formData} setFormData={setFormData} username={username} password={password}/>
+              </>
+            }
+          />
+        <Route
+            path="/profile"
+            element={
+              <>
+              <Navbar Navbar username={username} password={password} setFormData={setFormData}/>
+              <Profile />
               </>
             }
           />
