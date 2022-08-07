@@ -7,15 +7,17 @@ import { ListEvents } from "../ListEvents/ListEvents";
 export default function Homepage() {
   
   const user = {
-    id: 1
+    id: 1,
+    lat: 43.64446719365264,
+    lng: -79.38649706503828,
   };
   
   return (
     <div className="wrapper">
-      <ResultList />
       <ListEvents />
+      <ResultList />
       
-      {user && <Map user_id={user.id}/>}
+      {user && <Map user={user}/>}
       
     </div>
   );

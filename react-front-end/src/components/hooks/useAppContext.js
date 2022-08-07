@@ -3,6 +3,7 @@ import AppReducer from './useAppReducer';
 
 
 const initialState = {
+  //Load events where user_id = 1 and plans[0] (initial)
   events: [
     {
       id: "1",
@@ -20,6 +21,17 @@ const initialState = {
     } 
   ],
   results: [],
+  //Load plans where user_id = 1
+  plans: [
+    {
+      id: 1,
+      name: "Day in Toronto",
+    },
+    {
+      id: 2,
+      name: "Fun Weekend",
+    }
+  ],
 }
 
 export const AppContext = createContext(initialState);
@@ -30,12 +42,14 @@ export const AppProvider = ({ children }) => {
   const addToMap = (event) => {
     
     const updatedMap = state.events.concat(event);
-    // console.log("addToMap: ", updatedMap);
+    
+    const updatedResults = state.results.filter((res) => event.id !== res.id)
     
     dispatch({
       type: "ADD_TO_MAP",
       payload: {
-        events: updatedMap
+        events: updatedMap,
+        results: updatedResults
       }
     });
   };
@@ -65,16 +79,9 @@ export const AppProvider = ({ children }) => {
   }
 
   const changeIconColor  = (id) => {
-    const index = state.events.find((idSearch, indexSearch) => {
-      if(idSearch === id) {
-        return indexSearch;
-      }
-      return null;
-    })
-    
-    // state.events(index).done = !state.events(index).done
-    // console.log(state.events[index].done);
-    console.log(state.events[0].done);
+    const index = state.events.findIndex(ele => ele.id === id);
+    //Mark as done/undone
+    state.events[index].done = !state.events[index].done
 
     dispatch({
       type: "UPDATE_ICON_COLOR",
@@ -91,6 +98,7 @@ export const AppProvider = ({ children }) => {
     results: state.results,
     setResults,
     changeIconColor,
+    plans: state.plans,
   };
 
   return  (
