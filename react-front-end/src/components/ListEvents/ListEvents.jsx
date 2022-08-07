@@ -4,7 +4,7 @@ import { ListPlans } from '../ListPlans/ListPlans';
 
 export const ListEvents = () => {
   
-  const { events, changeIconColor, onOffRoutes } = useContext(AppContext);
+  const { events, changeIconColor, onOffRoutes, deleteFromMap } = useContext(AppContext);
   
   return (
     <div>
@@ -18,7 +18,7 @@ export const ListEvents = () => {
               <li key={item.id}>
                 <h5>{item.name}</h5>
                 <button onClick={() => changeIconColor(item.id)}>{item.done === false ? <>Done</> : <>Uncheck</>}</button>
-                <p></p>
+                <button onClick={() => deleteFromMap(item.id)}>Delete</button>
               </li>
           )
           })
