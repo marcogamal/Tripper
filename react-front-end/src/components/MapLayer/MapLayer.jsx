@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { LayerGroup, Marker, Popup } from "react-leaflet";
+
+import React, { useContext, useEffect } from 'react'
+import { LayerGroup, Marker, Popup, useMap } from 'react-leaflet';
 import * as L from "leaflet";
-import { AppContext } from "../hooks/useAppContext";
+import { AppContext } from '../hooks/useAppContext';
+import MapRouting from '../MapRouting';
 
 export const MapLayer = () => {
-  const { events, deleteFromMap, changeIconColor } = useContext(AppContext);
+  
+  const { events, deleteFromMap, changeIconColor, showRoutes } = useContext(AppContext);
   const LeafIcon = L.Icon.extend({
     options: {},
   });
-
   const blueIcon = new LeafIcon({
       iconUrl:
         "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF",
@@ -26,25 +28,23 @@ export const MapLayer = () => {
     <LayerGroup>
       {events.map((ele) => {
         return (
-          <>
-            <Marker
+          <div key={ele.id}>
+              <Marker 
               key={ele.id}
-              position={[ele.lat, ele.lng]}
-              icon={ele.done ? greenIcon : blueIcon}
-            >
-              <Popup>
-                {ele.name}
-                <br />
-                <br />
-                <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
-                <button onClick={() => changeIconColor(ele.id)}>
-                  {ele.done ? <>Uncheck</> : <>Done</>}
-                </button>
-              </Popup>
-            </Marker>
-          </>
+              position={[ele.latitude, ele.longitude]}
+              icon={ele.done ? greenIcon : blueIcon}>
+                <Popup>
+                  {ele.name}
+                  <br/>
+                  <br/>
+                  <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
+                  <button onClick={() => changeIconColor(ele.id)}>{ele.done ? <>Uncheck</> : <>Done</>}</button>
+                </Popup>
+              </Marker>             
+          </div>
         );
       })}
+      {showRoutes && <MapRouting map={map}/>}
     </LayerGroup>
   );
 };

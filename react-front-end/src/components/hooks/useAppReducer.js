@@ -46,6 +46,13 @@ const AppReducer = (state, action) => {
       let selectedPlan = payload.selectedPlan;
       return { ...state, events, selectedPlan };
 
+      case "ROUTES_SWITCH":
+      
+        console.log("ROUTES_SWITCH: ", payload.showRoutes);
+  
+        let routes = payload.showRoutes;    
+        return { ...state, routes };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`

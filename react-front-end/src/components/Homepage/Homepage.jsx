@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Map } from "../Map/Map";
 import "./Homepage.css";
 import { ResultList } from "../ResultList/ResultList";

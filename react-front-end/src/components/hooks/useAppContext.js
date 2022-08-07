@@ -33,6 +33,7 @@ const initialState = {
     },
   ],
   selectedPlan: null,
+  showRoutes: false,
 };
 
 export const AppContext = createContext(initialState);
@@ -144,6 +145,19 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const onOffRoutes  = () => {
+    
+    //Turn on/off routes available
+    state.showRoutes = !state.showRoutes
+
+    dispatch({
+      type: "ROUTES_SWITCH",
+      payload: {
+        events: state.showRoutes
+      }
+    })
+  }
+
   const value = {
     events: state.events,
     changePlan,
@@ -153,6 +167,8 @@ export const AppProvider = ({ children }) => {
     setResults,
     changeIconColor,
     plans: state.plans,
+    showRoutes: state.showRoutes,
+    onOffRoutes,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
