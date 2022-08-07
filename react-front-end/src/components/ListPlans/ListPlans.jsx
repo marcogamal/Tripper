@@ -8,7 +8,7 @@ export const ListPlans = () => {
   return (
     <select >
       {plans.map((option) => (
-        <option value={option.name}>{option.name}</option>
+        <option value={option.name} key={option.id}>{option.name}</option>
       ))}
     </select>
   )
