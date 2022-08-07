@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../hooks/useAppContext'
+import React, { useContext } from "react";
+import { AppContext } from "../hooks/useAppContext";
 
 export const ListPlans = () => {
-
-  const { plans } = useContext(AppContext);
+  const { plans, changePlan } = useContext(AppContext);
 
   return (
-    <select >
+    <select onChange={(e) => changePlan(e.target.value)}>
       {plans.map((option) => (
-        <option value={option.name} key={option.id}>{option.name}</option>
+        <option value={option.id}>{option.name}</option>
       ))}
     </select>
-  )
-}
+  );
+};

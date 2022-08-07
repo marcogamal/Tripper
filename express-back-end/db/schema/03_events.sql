@@ -3,12 +3,13 @@ DROP TABLE IF EXISTS events CASCADE;
 CREATE TABLE events (
   id VARCHAR(255) PRIMARY KEY NOT NULL,
   plan_id INTEGER REFERENCES plans(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   description TEXT,
   image VARCHAR(255) NOT NULL,
   lat DECIMAL NOT NULL,
   lng DECIMAL NOT NULL,
   date_time TIMESTAMP,
   street_address VARCHAR(255),
-  completed_at TIMESTAMP 
+  completed_at TIMESTAMP,
+  done BOOLEAN DEFAULT FALSE
 );

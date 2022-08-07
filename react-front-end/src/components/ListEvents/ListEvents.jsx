@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../hooks/useAppContext'
-import { ListPlans } from '../ListPlans/ListPlans';
+import React, { useContext } from "react";
+import { AppContext } from "../hooks/useAppContext";
+import { ListPlans } from "../ListPlans/ListPlans";
 
 export const ListEvents = () => {
-  
   const { events, changeIconColor, onOffRoutes, deleteFromMap } = useContext(AppContext);
   
   return (
@@ -25,5 +24,5 @@ export const ListEvents = () => {
         }
       </ol>      
     </div>
-  )
-}
+  );
+};

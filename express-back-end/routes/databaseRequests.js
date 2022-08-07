@@ -38,4 +38,43 @@ module.exports = function (router, database) {
         res.send(e);
       });
   });
+
+  // Add New Event to Plan
+  router.put("/plans/:planId", (req, res) => {
+    let planId = req.params.planId;
+    const newEvent = req.body.event;
+    console.log("newEvent: ", newEvent);
+    database
+      .addEventToPlan(planId, newEvent)
+      .then((event) => res.send({ event }))
+      .catch((e) => {
+        res.send(e);
+      });
+  });
+
+  // Remove an Event from the database
+  router.delete("/events/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+    console.log("in delete route");
+
+    database.deleteEvent(eventId).then(() => {
+      console.log("Event deleted!");
+    });
+  });
+
+  router.get("/events/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+
+    database.getEventById(eventId).then((event) => {
+      res.send({ event });
+    });
+  });
+
+  router.put("/events/done/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+
+    database.markEventDone(eventId).then((event) => {
+      res.send({ event });
+    });
+  });
 };
