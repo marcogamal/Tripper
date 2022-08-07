@@ -35,7 +35,10 @@ export default function Navbar({ username, setFormData }) {
 
       {username && (
         <div className="signOut">
-          <h2>Welcome, {username}</h2>
+          <h2>Hello, {username}!</h2>
+          <Link to="/profile">
+            <button>User Profile</button>
+          </Link>
           <Link to="/login">
             <button onClick={clearData}>Log Out</button>
           </Link>
