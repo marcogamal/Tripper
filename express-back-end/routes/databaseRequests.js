@@ -53,11 +53,20 @@ module.exports = function (router, database) {
   });
 
   // Remove an Event from the database
-  router.delete("/api/users/events/:eventId", (req, res) => {
+  router.delete("/events/:eventId", (req, res) => {
     let eventId = req.params.eventId;
+    console.log("in delete route");
 
     database.deleteEvent(eventId).then(() => {
       console.log("Event deleted!");
+    });
+  });
+
+  router.get("/events/:eventId", (req, res) => {
+    let eventId = req.params.eventId;
+
+    database.getEventById(eventId).then((event) => {
+      res.send({ event });
     });
   });
 };

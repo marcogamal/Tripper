@@ -11,5 +11,5 @@ CREATE TABLE events (
   date_time TIMESTAMP,
   street_address VARCHAR(255),
   completed_at TIMESTAMP,
-  done BOOLEAN
+  done BOOLEAN DEFAULT FALSE
 );

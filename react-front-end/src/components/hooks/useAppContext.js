@@ -102,6 +102,7 @@ export const AppProvider = ({ children }) => {
   const deleteFromMap = (id) => {
     const updatedMap = state.events.filter((el) => el.id !== id);
     console.log("deleteFromMap: ", updatedMap);
+    console.log("id of deleted", id);
 
     Axios.delete(`/api/users/events/${id}`).then(() => {
       console.log("Cancelled.");

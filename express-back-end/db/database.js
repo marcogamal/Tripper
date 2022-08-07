@@ -100,3 +100,20 @@ const deleteEvent = (eventId) => {
 };
 
 exports.deleteEvent = deleteEvent;
+
+const getEventById = (eventId) => {
+  let queryString = `SELECT * FROM events
+  WHERE id = $1;`;
+  let queryParams = [eventId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getEventById = getEventById;
