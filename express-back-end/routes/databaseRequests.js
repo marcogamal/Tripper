@@ -40,11 +40,12 @@ module.exports = function (router, database) {
   });
 
   // Add New Event to Plan
-  router.post("/plans/:planId", (req, res) => {
+  router.put("/plans/:planId", (req, res) => {
     let planId = req.params.planId;
     const newEvent = req.body.event;
+    console.log("newEvent: ", newEvent);
     database
-      .addEventToPlan(planId, req.body.event)
+      .addEventToPlan(planId, newEvent)
       .then((event) => res.send({ event }))
       .catch((e) => {
         res.send(e);

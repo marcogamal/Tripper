@@ -5,20 +5,20 @@ import Axios from "axios";
 const initialState = {
   //Load events where user_id = 1 and plans[0] (initial)
   events: [
-    {
-      id: "1",
-      name: "CN Tower",
-      lat: 43.64446719365264,
-      lng: -79.38649706503828,
-      done: false,
-    },
-    {
-      id: "2",
-      name: "Ripley's Aquarium",
-      lat: 43.64220060887206,
-      lng: -79.3864107609249,
-      done: true,
-    },
+    // {
+    //   id: "1",
+    //   name: "CN Tower",
+    //   lat: 43.64446719365264,
+    //   lng: -79.38649706503828,
+    //   done: false,
+    // },
+    // {
+    //   id: "2",
+    //   name: "Ripley's Aquarium",
+    //   lat: 43.64220060887206,
+    //   lng: -79.3864107609249,
+    //   done: true,
+    // },
   ],
   results: [],
   //Load plans where user_id = 1
