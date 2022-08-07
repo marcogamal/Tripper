@@ -33,6 +33,12 @@ const AppReducer = (state, action) => {
       events = payload.events;
       return { ...state, events };
 
+    case "SET_PLANS":
+      console.log("SET_PLANS: ", payload.plans);
+
+      let plans = payload.plans;
+      return { ...state, plans };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`

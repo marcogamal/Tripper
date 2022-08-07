@@ -26,7 +26,7 @@ exports.getUserInfo = getUserInfo;
 
 const getPlansForUser = (userId) => {
   let queryString = `SELECT * FROM plans
-  WHERE plans.id = $1`;
+  WHERE plans.user_id = $1`;
   let queryParams = [userId];
 
   return pool

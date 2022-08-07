@@ -40,12 +40,23 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    Axios.get("/api/users/plans/1").then((res) => {
-      // console.log(res.data.event);
+    Promise.all([
+      Axios.get("/api/users/plans/1"),
+      Axios.get("/api/users/plans"),
+    ]).then((res) => {
+      console.log(res);
+
       dispatch({
         type: "SET_EVENTS",
         payload: {
-          events: res.data.event,
+          events: res[0].data.event,
+        },
+      });
+
+      dispatch({
+        type: "SET_PLANS",
+        payload: {
+          plans: res[1].data.plan,
         },
       });
     });

@@ -10,5 +10,6 @@ CREATE TABLE events (
   lng DECIMAL NOT NULL,
   date_time TIMESTAMP,
   street_address VARCHAR(255),
-  completed_at BOOLEAN
+  completed_at TIMESTAMP,
+  done BOOLEAN
 );
