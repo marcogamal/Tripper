@@ -73,8 +73,6 @@ export const AppProvider = ({ children }) => {
           selectedPlan: planId,
         },
       });
-      console.log(res);
-      console.log(planId);
     });
   };
 
@@ -145,18 +143,17 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const onOffRoutes  = () => {
-    
+  const onOffRoutes = () => {
     //Turn on/off routes available
-    state.showRoutes = !state.showRoutes
+    state.showRoutes = !state.showRoutes;
 
     dispatch({
       type: "ROUTES_SWITCH",
       payload: {
-        events: state.showRoutes
-      }
-    })
-  }
+        events: state.showRoutes,
+      },
+    });
+  };
 
   const value = {
     events: state.events,
