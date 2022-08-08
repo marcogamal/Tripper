@@ -5,7 +5,7 @@ import { AppContext } from "../hooks/useAppContext";
 import MapRouting from "../MapRouting";
 
 export const MapLayer = () => {
-  const { events, deleteFromMap, changeIconColor, showRoutes } =
+  const { events, deleteFromMap, showRoutes, changeIconColor } =
     useContext(AppContext);
   const LeafIcon = L.Icon.extend({
     options: {},
@@ -32,7 +32,7 @@ export const MapLayer = () => {
           <div key={ele.id}>
             <Marker
               key={ele.id}
-              position={[ele.latitude, ele.longitude]}
+              position={[ele.lat, ele.lng]}
               icon={ele.done ? greenIcon : blueIcon}
             >
               <Popup>
