@@ -46,7 +46,7 @@ export const AppProvider = ({ children }) => {
       Axios.get("/api/users/plans/1"),
       Axios.get("/api/users/plans"),
     ]).then((res) => {
-      console.log(res);
+      console.log(res[0].data.event);
 
       dispatch({
         type: "SET_EVENTS",

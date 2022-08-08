@@ -21,7 +21,7 @@ export default function MapRouting(props) {
     // build destinations array
     const destinations = [];
     events.forEach((event) => {
-      destinations.push(L.latLng(event.latitude, event.longitude))
+      destinations.push(L.latLng(event.lat, event.lng))
     })
 
     const routingControl = L.Routing.control({
