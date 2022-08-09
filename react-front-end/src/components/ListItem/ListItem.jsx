@@ -24,6 +24,7 @@ export const ListItem = (props) => {
       {props && (
         <div>
           <p>{props.results.name}</p>
+          <p>{props.results.address}</p>
           <p>
             Rating: {props.results.rating} ({props.results.review} reviews)
           </p>

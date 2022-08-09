@@ -19,6 +19,7 @@ export const SearchBar = () => {
         longitude: item.coordinates.longitude,
         review: item.review_count,
         image_url: item.image_url,
+        address: [item.location.address1, ", ", item.location.city ]
       };
       infoAll.push(infoItem);
     });
@@ -34,7 +35,7 @@ export const SearchBar = () => {
     try {
       const resp = await axios.get(`/api/events/${keyword}/${location}`);
       resultsSet(resp.data);
-      // console.log("results:", results);
+      console.log("results:", resp.data);
     } catch (error) {
       console.log(error);
     }
