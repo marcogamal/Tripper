@@ -15,7 +15,9 @@ export const ListEvents = () => {
           events.map((item) => {
             return (
               <li key={item.id}>
-                <h5>{item.name}</h5>
+                <a href={item.image} target="_blank" rel="noopener noreferrer">
+                  <h5>{item.name}</h5>
+                </a>
                 <button onClick={() => changeIconColor(item.id)}>{item.done === false ? <>Done</> : <>Uncheck</>}</button>
                 <button onClick={() => deleteFromMap(item.id)}>Delete</button>
               </li>
