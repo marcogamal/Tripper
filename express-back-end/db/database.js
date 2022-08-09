@@ -26,7 +26,7 @@ exports.getUserInfo = getUserInfo;
 
 const getPlansForUser = (userId) => {
   let queryString = `SELECT * FROM plans
-  WHERE plans.id = $1`;
+  WHERE plans.user_id = $1`;
   let queryParams = [userId];
 
   return pool
@@ -57,3 +57,81 @@ const getEventsForPlan = (planId) => {
 };
 
 exports.getEventsForPlan = getEventsForPlan;
+
+// Add Event to Plan
+const addEventToPlan = (planId, newEvent) => {
+  let queryString = `INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), $8);`;
+  let queryParams = [
+    newEvent.id,
+    planId,
+    newEvent.name,
+    newEvent.alias,
+    newEvent.url,
+    newEvent.lat,
+    newEvent.lng,
+    newEvent.address,
+  ];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.addEventToPlan = addEventToPlan;
+
+// Delete Event From Database
+const deleteEvent = (eventId) => {
+  let queryString = `DELETE FROM events WHERE id = $1;`;
+  let queryParams = [eventId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.deleteEvent = deleteEvent;
+
+const getEventById = (eventId) => {
+  let queryString = `SELECT * FROM events
+  WHERE id = $1;`;
+  let queryParams = [eventId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getEventById = getEventById;
+
+const markEventDone = (eventId) => {
+  let queryString = `UPDATE events 
+  SET done = NOT done
+  WHERE id = $1;`;
+  let queryParams = [eventId];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.markEventDone = markEventDone;
