@@ -12,8 +12,8 @@ export const ListItem = (props) => {
       lat: props.results.latitude,
       lng: props.results.longitude,
       done: false,
-      alias: "alias-test",
-      url: "url-test",
+      alias: props.results.alias,
+      url: props.results.url,
       address: "123 avenue",
     });
     console.log("adding event", props.results);
@@ -23,17 +23,19 @@ export const ListItem = (props) => {
     <li>
       {props && (
         <div>
-          <p>{props.results.name}</p>
+          <a href={props.results.url} target="_blank" rel="noopener noreferrer">{props.results.name}</a>
           <p>{props.results.address}</p>
           <p>
             Rating: {props.results.rating} ({props.results.review} reviews)
           </p>
-          <img
-            src={props.results.image_url}
-            alt=""
-            height="150px"
-            width="150px"
-          />
+          <a href={props.results.url} target="_blank" rel="noopener noreferrer">
+            <img
+              src={props.results.image_url}
+              alt=""
+              height="150px"
+              width="150px"
+            />
+          </a>
           <button onClick={addMarker}>Add</button>
         </div>
       )}
