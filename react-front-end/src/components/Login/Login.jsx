@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import ReactDOM from "react-dom";
+import { AppContext } from "../hooks/useAppContext";
 
 import "./Login.css";
 import Navbar from "../Navbar/Navbar";
 
-export default function Login({formData, setFormData, username, password}) {
+export default function Login({ formData, setFormData, username, password }) {
   // React States
   const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState({});
@@ -34,6 +35,8 @@ export default function Login({formData, setFormData, username, password}) {
     pass: "invalid password",
   };
 
+  const { login } = useContext(AppContext);
+
   const handleChange = (e) => {
     const newFormData = { ...formData };
     newFormData[e.target.name] = e.target.value;
@@ -44,17 +47,20 @@ export default function Login({formData, setFormData, username, password}) {
     //Prevent page reload
     event.preventDefault();
 
-    // Check if input form is equal with database
-    const loginChecker = database.filter((credential) => {
-      return (
-        credential.username === username && credential.password === password
-      );
-    });
+    login(username, password);
+    console.log("name:", username);
 
-    if (loginChecker.length) {
-      navigate("/");
-      setIsSubmitted(true);
-    }
+    // // Check if input form is equal with database
+    // const loginChecker = database.filter((credential) => {
+    //   return (
+    //     credential.username === username && credential.password === password
+    //   );
+    // });
+
+    // if (loginChecker.length) {
+    //   navigate("/");
+    //   setIsSubmitted(true);
+    // }
   };
 
   // var { uname, pass } = document.forms[0];

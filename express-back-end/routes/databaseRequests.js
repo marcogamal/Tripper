@@ -12,6 +12,20 @@ module.exports = function (router, database) {
       });
   });
 
+  // Login Route
+  router.post("/login", (req, res) => {
+    let user = req.body.user;
+    console.log("req user:", user);
+    database
+      .checkUserLogin(user)
+      .then((user) => {
+        res.send({ user });
+      })
+      .catch((e) => {
+        res.send(e);
+      });
+  });
+
   // Get User Plans
   router.get("/plans", (req, res) => {
     // let userId = Number(req.cookies["userId"]);

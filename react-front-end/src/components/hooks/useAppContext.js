@@ -21,6 +21,7 @@ const initialState = {
   ],
   selectedPlan: 1,
   showRoutes: false,
+  user_id: null,
 };
 
 export const AppContext = createContext(initialState);
@@ -47,6 +48,19 @@ export const AppProvider = ({ children }) => {
       });
     });
   }, []);
+
+  const login = (email, password) => {
+    let user = { email, password };
+    Axios.post("/api/users/login", { user }).then((res) => {
+      console.log(res.data.user[0].id);
+      dispatch({
+        type: "SET_USER",
+        payload: {
+          user_id: res.data.user[0].id,
+        },
+      });
+    });
+  };
 
   const changePlan = (planId) => {
     Axios.get(`/api/users/plans/${planId}`).then((res) => {
@@ -141,6 +155,7 @@ export const AppProvider = ({ children }) => {
 
   const value = {
     events: state.events,
+    login,
     changePlan,
     addToMap,
     deleteFromMap,
