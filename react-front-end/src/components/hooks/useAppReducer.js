@@ -27,6 +27,12 @@ const AppReducer = (state, action) => {
       events = payload.events;
       return { ...state, events };
 
+    case "SET_USER":
+      console.log("SET_USER: ", payload.user_id);
+
+      let user_id = payload.user_id;
+      return { ...state, user_id };
+
     case "SET_EVENTS":
       console.log("SET_EVENTS: ", payload.events);
 

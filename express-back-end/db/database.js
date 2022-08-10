@@ -24,6 +24,26 @@ const getUserInfo = (userId) => {
 
 exports.getUserInfo = getUserInfo;
 
+const checkUserLogin = (user) => {
+  let queryString = `SELECT id FROM users
+  WHERE email = $1
+  AND password = $2;`;
+  let queryParams = [user.email, user.password];
+
+  console.log("in db:", user);
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.checkUserLogin = checkUserLogin;
+
 const getPlansForUser = (userId) => {
   let queryString = `SELECT * FROM plans
   WHERE plans.user_id = $1`;
