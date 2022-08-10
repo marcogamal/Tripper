@@ -19,7 +19,7 @@ const initialState = {
       user_id: 1,
     },
   ],
-  selectedPlan: null,
+  selectedPlan: 1,
   showRoutes: false,
 };
 

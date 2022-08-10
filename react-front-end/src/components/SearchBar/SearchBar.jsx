@@ -21,7 +21,7 @@ export const SearchBar = () => {
         image_url: item.image_url,
         url: item.url,
         alias: item.alias,
-        address: [item.location.address1, ", ", item.location.city ]
+        address: `${item.location.address1}, ${item.location.city}`
       };
       infoAll.push(infoItem);
     });
