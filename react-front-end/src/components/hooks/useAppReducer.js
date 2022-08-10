@@ -37,21 +37,21 @@ const AppReducer = (state, action) => {
       console.log("SET_PLANS: ", payload.plans);
 
       let plans = payload.plans;
-      return { ...state, plans };
+      let selectedPlan = payload.plans[0].id;
+      return { ...state, plans, selectedPlan };
 
     case "CHANGE_PLAN":
       console.log("CHANGE_PLAN: ", payload);
 
       events = payload.events;
-      let selectedPlan = payload.selectedPlan;
+      selectedPlan = payload.selectedPlan;
       return { ...state, events, selectedPlan };
 
-      case "ROUTES_SWITCH":
-      
-        console.log("ROUTES_SWITCH: ", payload.showRoutes);
-  
-        let routes = payload.showRoutes;    
-        return { ...state, routes };
+    case "ROUTES_SWITCH":
+      console.log("ROUTES_SWITCH: ", payload.showRoutes);
+
+      let routes = payload.showRoutes;
+      return { ...state, routes };
 
     default:
       throw new Error(
