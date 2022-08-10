@@ -20,7 +20,7 @@ export const ListEvents = () => {
                 </a>
 
                 <img
-                  src={item.image}
+                  src={item.image_url}
                   alt=""
                   height="150px"
                   width="150px"
