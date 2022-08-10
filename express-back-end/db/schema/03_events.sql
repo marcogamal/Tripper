@@ -11,5 +11,6 @@ CREATE TABLE events (
   date_time TIMESTAMP,
   street_address VARCHAR(255),
   completed_at TIMESTAMP,
-  done BOOLEAN DEFAULT FALSE
+  done BOOLEAN DEFAULT FALSE,
+  image_url VARCHAR(255)
 );

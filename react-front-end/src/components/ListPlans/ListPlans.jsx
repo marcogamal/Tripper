@@ -7,7 +7,7 @@ export const ListPlans = () => {
   return (
     <select onChange={(e) => changePlan(e.target.value)}>
       {plans.map((option) => (
-        <option value={option.id}>{option.name}</option>
+        <option value={option.id} key={option.id}>{option.name}</option>
       ))}
     </select>
   );

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import "./SearchBar";
+import "./SearchBar.css";
 import { AppContext } from "../hooks/useAppContext";
 
 export const SearchBar = () => {
@@ -53,7 +53,7 @@ export const SearchBar = () => {
 
   return (
     <div className="searchbar">
-      <h2>Search</h2>
+      {/* <h2>Search</h2> */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -69,7 +69,7 @@ export const SearchBar = () => {
           value={location}
           onChange={(e) => handleChangeLocation(e)}
         ></input>
-        <button>Search</button>
+        <button className="button-51">Search</button>
 
       </form>
     </div>

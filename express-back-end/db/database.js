@@ -60,7 +60,7 @@ exports.getEventsForPlan = getEventsForPlan;
 
 // Add Event to Plan
 const addEventToPlan = (planId, newEvent) => {
-  let queryString = `INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), $8);`;
+  let queryString = `INSERT INTO events (id, plan_id, name, description, image, lat, lng, date_time, street_address, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), $8, $9);`;
   let queryParams = [
     newEvent.id,
     planId,
@@ -70,6 +70,7 @@ const addEventToPlan = (planId, newEvent) => {
     newEvent.lat,
     newEvent.lng,
     newEvent.address,
+    newEvent.image_url,
   ];
 
   return pool
