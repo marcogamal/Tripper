@@ -27,10 +27,10 @@ module.exports = function (router, database) {
   });
 
   // Get User Plans
-  router.get("/plans", (req, res) => {
+  router.get("/plans/user/:userId", (req, res) => {
     // let userId = Number(req.cookies["userId"]);
     // console.log(userId);
-    let userId = 1;
+    let userId = req.params.userId;
     database
       .getPlansForUser(userId)
       .then((plan) => res.send({ plan }))

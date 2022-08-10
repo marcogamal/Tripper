@@ -7,19 +7,8 @@ const initialState = {
   events: [],
   results: [],
   //Load plans where user_id = 1
-  plans: [
-    {
-      id: 1,
-      name: "Day in Toronto",
-      user_id: 1,
-    },
-    {
-      id: 2,
-      name: "Fun Weekend",
-      user_id: 1,
-    },
-  ],
-  selectedPlan: 1,
+  plans: [{}, {}],
+  selectedPlan: null,
   showRoutes: false,
   user_id: null,
 };
@@ -30,22 +19,24 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    Axios.get("/api/users/plans").then((res) => {
-      dispatch({
-        type: "SET_PLANS",
-        payload: {
-          plans: res.data.plan,
-        },
-      });
-
-      Axios.get(`/api/users/plans/${res.data.plan[0].id}`).then((res) => {
+    Axios.get(`/api/users/plans/user/${state.user_id}`).then((res) => {
+      if (res.data.plan) {
         dispatch({
-          type: "SET_EVENTS",
+          type: "SET_PLANS",
           payload: {
-            events: res.data.event,
+            plans: res.data.plan,
           },
         });
-      });
+
+        Axios.get(`/api/users/plans/${res.data.plan[0].id}`).then((res) => {
+          dispatch({
+            type: "SET_EVENTS",
+            payload: {
+              events: res.data.event,
+            },
+          });
+        });
+      }
     });
   }, []);
 
