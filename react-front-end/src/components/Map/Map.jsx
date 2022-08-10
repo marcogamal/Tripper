@@ -16,7 +16,7 @@ export const Map = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <MapLayer key={plan.id}/>
+      <MapLayer key={plan.id} />
 
 
     </MapContainer>

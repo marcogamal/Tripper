@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { LayerGroup, Marker, Popup, useMap } from "react-leaflet";
 import * as L from "leaflet";
 import { AppContext } from "../hooks/useAppContext";
 import MapRouting from "../MapRouting";
 
-export const MapLayer = () => {
+export const MapLayer = (props) => {
   const { events, deleteFromMap, showRoutes, changeIconColor } =
     useContext(AppContext);
   const LeafIcon = L.Icon.extend({
@@ -20,9 +20,10 @@ export const MapLayer = () => {
     });
 
   const map = useMap();
-
+  
   useEffect(() => {
     console.log("rendering map", events);
+
   }, [events]);
 
   return (
@@ -33,10 +34,11 @@ export const MapLayer = () => {
             <Marker
               key={ele.id}
               position={[ele.lat, ele.lng]}
-              icon={ele.done ? greenIcon : blueIcon}
+              icon={ele.done ? greenIcon : blueIcon}             
             >
               <Popup>
-                {ele.name}
+                <h3>{ele.name}</h3>
+                {ele.street_address}
                 <br />
                 <br />
                 <button onClick={() => changeIconColor(ele.id)}>

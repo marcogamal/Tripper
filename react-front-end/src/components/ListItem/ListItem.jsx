@@ -14,7 +14,7 @@ export const ListItem = (props) => {
       done: false,
       alias: props.results.alias,
       url: props.results.url,
-      address: "123 avenue",
+      address: props.results.address,
       image_url: props.results.image_url,
     });
     console.log("adding event", props.results);

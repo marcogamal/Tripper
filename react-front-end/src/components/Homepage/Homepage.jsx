@@ -17,7 +17,7 @@ export default function Homepage() {
       <ListEvents />
       <ResultList />
       
-      {user && <Map user={user}/>}
+      {user && <Map user={user} />}
       
     </div>
   );
