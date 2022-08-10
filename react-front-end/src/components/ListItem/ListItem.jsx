@@ -36,7 +36,9 @@ export const ListItem = (props) => {
               width="150px"
             />
           </a>
-          <button onClick={addMarker}>Add</button>
+          {/* <button onClick={addMarker}>Add</button> */}
+          {/* <i className="fa-regular fa-location-plus" onClick={addMarker}></i> */}
+          <i className="fa-regular fa-2x fa-square-plus" onClick={addMarker}></i>
         </div>
       )}
     </li>

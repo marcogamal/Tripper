@@ -39,10 +39,13 @@ export const MapLayer = () => {
                 {ele.name}
                 <br />
                 <br />
-                <button onClick={() => deleteFromMap(ele.id)}>Delete</button>
                 <button onClick={() => changeIconColor(ele.id)}>
                   {ele.done ? <>Uncheck</> : <>Done</>}
                 </button>
+
+                {/* <button onClick={() => deleteFromMap(ele.id)}>Delete</button> */}
+                <i className="fa-solid fa-trash fa-1.5x" onClick={() => deleteFromMap(ele.id)}></i>
+
               </Popup>
             </Marker>
           </div>

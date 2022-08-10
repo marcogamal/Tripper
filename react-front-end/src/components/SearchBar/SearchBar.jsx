@@ -53,7 +53,7 @@ export const SearchBar = () => {
 
   return (
     <div className="searchbar">
-      <h2>Search</h2>
+      {/* <h2>Search</h2> */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
