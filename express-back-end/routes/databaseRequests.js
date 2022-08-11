@@ -15,7 +15,6 @@ module.exports = function (router, database) {
   // Login Route
   router.post("/login", (req, res) => {
     let user = req.body.user;
-    console.log("req user:", user);
     database
       .checkUserLogin(user)
       .then((user) => {
@@ -26,10 +25,8 @@ module.exports = function (router, database) {
       });
   });
 
-  // Get User Plans
+  // Get Plans For User
   router.get("/plans/user/:userId", (req, res) => {
-    // let userId = Number(req.cookies["userId"]);
-    // console.log(userId);
     let userId = req.params.userId;
     database
       .getPlansForUser(userId)
@@ -39,11 +36,20 @@ module.exports = function (router, database) {
       });
   });
 
+  // Add New Plan
+  router.put("/plans", (req, res) => {
+    let userId = req.body.info.userId;
+    let planName = req.body.info.planName;
+    database
+      .addNewPlan(userId, planName)
+      .then((plan) => res.send({ plan }))
+      .catch((e) => {
+        res.send(e);
+      });
+  });
+
   // Get Events For Plan
   router.get("/plans/:planId", (req, res) => {
-    // let userId = Number(req.cookies["userId"]);
-    // console.log(userId);
-    // let userId = 1;
     let planId = req.params.planId;
     database
       .getEventsForPlan(planId)
