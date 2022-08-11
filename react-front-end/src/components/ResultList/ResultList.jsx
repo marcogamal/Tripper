@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../hooks/useAppContext'
 import { ListItem } from '../ListItem/ListItem'
 
 export const ResultList = () => {
 
   const { results } = useContext(AppContext);
+
+  useEffect(() => {
+
+  },[results])
 
   return (
     <div className="results-wrapper">

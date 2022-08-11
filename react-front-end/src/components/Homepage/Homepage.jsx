@@ -3,6 +3,7 @@ import { Map } from "../Map/Map";
 import "./Homepage.css";
 import { ResultList } from "../ResultList/ResultList";
 import { ListEvents } from "../ListEvents/ListEvents";
+import { ListCategories } from "../ListCategories/ListCategories";
 
 export default function Homepage() {
   
@@ -13,12 +14,17 @@ export default function Homepage() {
   };
   
   return (
-    <div className="wrapper">
-      <ListEvents />
-      <ResultList />
-      
-      {user && <Map user={user} />}
-      
+    <div className="wrapper-main">
+      <div className="wrapper-left">
+        <ListCategories/>
+        <div className="info">
+          <ListEvents />
+          <ResultList />
+        </div>
+      </div>
+      <div className="wrapper-right" id="map">
+        {user && <Map user={user} />}
+      </div>
     </div>
   );
 }

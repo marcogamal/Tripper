@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import { LayerGroup, Marker, Popup, useMap } from "react-leaflet";
 import * as L from "leaflet";
 import { AppContext } from "../hooks/useAppContext";

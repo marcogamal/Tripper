@@ -13,7 +13,7 @@ export const ListEvents = () => {
       <ListPlans />
       {events.length > 0 ? (
         <>
-          <h4>My Plan:</h4>
+          <b>My Plan:</b>
           <i
             className="fa-solid fa-map-location-dot fa-2x"
             onClick={() => onOffRoutes()}
