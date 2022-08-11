@@ -30,8 +30,6 @@ const checkUserLogin = (user) => {
   AND password = $2;`;
   let queryParams = [user.email, user.password];
 
-  console.log("in db:", user);
-
   return pool
     .query(queryString, queryParams)
     .then((res) => {
@@ -77,6 +75,23 @@ const getEventsForPlan = (planId) => {
 };
 
 exports.getEventsForPlan = getEventsForPlan;
+
+// Create a New Plan
+const addNewPlan = (userId, planName) => {
+  let queryString = `INSERT INTO plans (user_id, name, ordering) VALUES ($1, $2, 1);`;
+  let queryParams = [userId, planName];
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.addNewPlan = addNewPlan;
 
 // Add Event to Plan
 const addEventToPlan = (planId, newEvent) => {

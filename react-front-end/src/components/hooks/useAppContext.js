@@ -7,10 +7,21 @@ const initialState = {
   events: [],
   results: [],
   //Load plans where user_id = 1
-  plans: [{}, {}],
-  selectedPlan: null,
+  plans: [
+    {
+      id: 1,
+      name: "Day in Toronto",
+      user_id: 1,
+    },
+    {
+      id: 2,
+      name: "Fun Weekend",
+      user_id: 1,
+    },
+  ],
+  selectedPlan: 1,
   showRoutes: false,
-  user: { name: null, id: null },
+  user: { name: "User", id: 1 },
 };
 
 export const AppContext = createContext(initialState);
@@ -43,7 +54,6 @@ export const AppProvider = ({ children }) => {
   const login = (email, password) => {
     let user = { email, password };
     Axios.post("/api/users/login", { user }).then((res) => {
-      console.log(res.data.user[0]);
       dispatch({
         type: "SET_USER",
         payload: {
@@ -52,6 +62,31 @@ export const AppProvider = ({ children }) => {
       });
 
       Axios.get(`/api/users/plans/user/${res.data.user[0].id}`).then((res) => {
+        if (res.data.plan) {
+          dispatch({
+            type: "SET_PLANS",
+            payload: {
+              plans: res.data.plan,
+            },
+          });
+
+          Axios.get(`/api/users/plans/${res.data.plan[0].id}`).then((res) => {
+            dispatch({
+              type: "SET_EVENTS",
+              payload: {
+                events: res.data.event,
+              },
+            });
+          });
+        }
+      });
+    });
+  };
+
+  const addPlan = (planName) => {
+    const info = { userId: state.user.id, planName: planName };
+    Axios.put("/api/users/plans", { info }).then((res) => {
+      Axios.get(`/api/users/plans/user/${state.user.id}`).then((res) => {
         if (res.data.plan) {
           dispatch({
             type: "SET_PLANS",
@@ -168,6 +203,7 @@ export const AppProvider = ({ children }) => {
     events: state.events,
     login,
     user: state.user,
+    addPlan,
     changePlan,
     addToMap,
     deleteFromMap,
