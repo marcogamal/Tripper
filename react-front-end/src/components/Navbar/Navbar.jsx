@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { AppContext } from "../hooks/useAppContext";
 
 const logo = require("./TripperLogo.png");
 
@@ -9,6 +10,8 @@ export default function Navbar({ username, setFormData }) {
   const clearData = () => {
     return setFormData("");
   };
+  const { user } = useContext(AppContext);
+
   return (
     <div className="navbar">
       <div className="navbarLogo" href="#">
@@ -35,7 +38,7 @@ export default function Navbar({ username, setFormData }) {
 
       {username && (
         <div className="signOut">
-          <h2>Hello, {username}!</h2>
+          <h2>Hello, {user.name}!</h2>
           <Link to="/profile">
             <button>User Profile</button>
           </Link>

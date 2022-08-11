@@ -25,7 +25,7 @@ const getUserInfo = (userId) => {
 exports.getUserInfo = getUserInfo;
 
 const checkUserLogin = (user) => {
-  let queryString = `SELECT id FROM users
+  let queryString = `SELECT id, name FROM users
   WHERE email = $1
   AND password = $2;`;
   let queryParams = [user.email, user.password];
