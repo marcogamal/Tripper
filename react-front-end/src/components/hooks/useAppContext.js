@@ -10,7 +10,7 @@ const initialState = {
   plans: [{}, {}],
   selectedPlan: null,
   showRoutes: false,
-  user_id: null,
+  user: { name: null, id: null },
 };
 
 export const AppContext = createContext(initialState);
@@ -19,7 +19,7 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    Axios.get(`/api/users/plans/user/${state.user_id}`).then((res) => {
+    Axios.get(`/api/users/plans/user/${state.user.id}`).then((res) => {
       if (res.data.plan) {
         dispatch({
           type: "SET_PLANS",
@@ -43,12 +43,32 @@ export const AppProvider = ({ children }) => {
   const login = (email, password) => {
     let user = { email, password };
     Axios.post("/api/users/login", { user }).then((res) => {
-      console.log(res.data.user[0].id);
+      console.log(res.data.user[0]);
       dispatch({
         type: "SET_USER",
         payload: {
-          user_id: res.data.user[0].id,
+          user: { name: res.data.user[0].name, id: res.data.user[0].id },
         },
+      });
+
+      Axios.get(`/api/users/plans/user/${res.data.user[0].id}`).then((res) => {
+        if (res.data.plan) {
+          dispatch({
+            type: "SET_PLANS",
+            payload: {
+              plans: res.data.plan,
+            },
+          });
+
+          Axios.get(`/api/users/plans/${res.data.plan[0].id}`).then((res) => {
+            dispatch({
+              type: "SET_EVENTS",
+              payload: {
+                events: res.data.event,
+              },
+            });
+          });
+        }
       });
     });
   };
@@ -147,6 +167,7 @@ export const AppProvider = ({ children }) => {
   const value = {
     events: state.events,
     login,
+    user: state.user,
     changePlan,
     addToMap,
     deleteFromMap,
