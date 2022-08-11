@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import "./SearchBar.css";
 import { AppContext } from "../hooks/useAppContext";
 
 export const SearchBar = () => {
-  const [keyword, setKeyword] = useState("");
-  const [location, setLocation] = useState("");
-  const { setResults } = useContext(AppContext);
+
+  const { setResults, location, setLocation, keyword, setKeyword } = useContext(AppContext);
 
   const resultsSet = (data) => {
     const infoAll = [];
@@ -45,6 +44,7 @@ export const SearchBar = () => {
 
   const handleChangeKeyword = (e) => {
     setKeyword(e.target.value);
+    console.log("change", keyword);
   };
 
   const handleChangeLocation = (e) => {
@@ -59,7 +59,7 @@ export const SearchBar = () => {
           type="text"
           placeholder="Keyword..."
           id="keyword"
-          value={keyword}
+          // value={keyword}
           onChange={(e) => handleChangeKeyword(e)}
         ></input>
         <input

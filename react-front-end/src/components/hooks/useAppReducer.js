@@ -15,6 +15,18 @@ const AppReducer = (state, action) => {
       events = payload.events;
       return { ...state, events };
 
+    case "SET_KEYWORD":
+      console.log("SET_KEYWORD: ", payload);
+
+      let keyword = payload.keyword;
+      return { ...state, keyword };
+
+    case "SET_LOCATION":
+      console.log("SET_LOCATION: ", payload);
+
+      let location = payload.location;
+      return { ...state, location };
+
     case "SET_RESULTS":
       console.log("SET_RESULTS: ", payload);
 

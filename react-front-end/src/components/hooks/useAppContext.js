@@ -6,6 +6,8 @@ const initialState = {
   //Load events where user_id = 1 and plans[0] (initial)
   events: [],
   results: [],
+  location: "",
+  keyword: "",
   //Load plans where user_id = 1
   plans: [
     {
@@ -199,6 +201,26 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const setLocation = (data) => {
+    state.location = data;
+    dispatch({
+      type: "SET_LOCATION",
+      payload: {
+        location: state.location,
+      },
+    });    
+  }
+
+  const setKeyword = (data) => {
+    state.keyword = data;
+    dispatch({
+      type: "SET_KEYWORD",
+      payload: {
+        keyword: state.keyword,
+      },
+    });    
+  }  
+
   const value = {
     events: state.events,
     login,
@@ -213,6 +235,10 @@ export const AppProvider = ({ children }) => {
     plans: state.plans,
     showRoutes: state.showRoutes,
     onOffRoutes,
+    location: state.location,
+    setLocation,
+    keyword: state.keyword,
+    setKeyword,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
