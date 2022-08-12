@@ -59,7 +59,7 @@ export const SearchBar = () => {
           type="text"
           placeholder="Keyword..."
           id="keyword"
-          // value={keyword}
+          value={keyword}
           onChange={(e) => handleChangeKeyword(e)}
         ></input>
         <input

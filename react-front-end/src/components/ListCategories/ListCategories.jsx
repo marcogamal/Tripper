@@ -5,7 +5,7 @@ import './ListCategories.css'
 
 export const ListCategories = () => {
 
-  const { location, setLocation, keyword, setKeyword, setResults } = useContext(AppContext);
+  const { location, setResults } = useContext(AppContext);
 
   const resultsSet = (data) => {
     const infoAll = [];
@@ -30,30 +30,27 @@ export const ListCategories = () => {
     
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (keyword) => {
 
     try {
+      console.log("search for: ", keyword, location);
       const resp = await Axios.get(`/api/events/${keyword}/${location}`);
       resultsSet(resp.data);
+
       console.log("results:", resp.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleClick = (keyword) => {
-    setKeyword(keyword);
-    setLocation(location);
-    handleSubmit()
-  }
-
   return (
     <div>
       <b>Categories:</b>
-      <i className="fa-solid fa-utensils fa-2x" onClick={() => handleClick("food")}></i>
-      <i className="fa-solid fa-masks-theater fa-2x" onClick={() => handleClick("museum")}></i>
-      <i className="fa-solid fa-cart-shopping fa-2x" onClick={() => handleClick("shop")}></i>
-      <i className="fa-solid fa-tree fa-2x" onClick={() => handleClick("park")}></i>
+      <i className="fa-solid fa-utensils fa-2x" onClick={() => handleSubmit("food")}></i>
+      <i className="fa-solid fa-masks-theater fa-2x" onClick={() => handleSubmit("museum")}></i>
+      <i className="fa-solid fa-cart-shopping fa-2x" onClick={() => handleSubmit("shop")}></i>
+      <i className="fa-solid fa-tree fa-2x" onClick={() => handleSubmit("park")}></i>
+      {/* <button onClick={() => handleSubmit("shop")}> test</button> */}
     </div>
   )
 }
