@@ -12,20 +12,20 @@ export const ListEvents = () => {
     <div className="list">
       <NewPlan />
       <ListPlans />
+
       <p>
-      {events.length > 0 ? (
-        <>
-          <b>My Plan:</b>
-          <i
-            className="fa-solid fa-map-location-dot fa-2x"
-            onClick={() => onOffRoutes()}
-          ></i>
-        </>
-      ) : (
-        <h4>You don't have anything planned yet =/</h4>
-      )}
+        {events.length > 0 ? (
+          <>
+            <i
+              className="fa-solid fa-map-location-dot fa-2x"
+              onClick={() => onOffRoutes()}
+            ></i>
+          </>
+        ) : (
+          <h4>You don't have anything planned yet =/</h4>
+        )}
       </p>
-      {/* //List of plans for the specific user. Events would have to be loaded according to each plan */}
+
       <ol>
         {events.map((item) => {
           return (
