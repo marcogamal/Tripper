@@ -35,18 +35,21 @@ export const ListEvents = () => {
                 <p>{item.name}
                 {item.done === false ? (
                 <i
-                  className="fa-solid fa-check fa-2x"
+                  className="fa-solid fa-check"
                   onClick={() => changeIconColor(item.id)}
+                  style={{"padding-left": "10px"}}
                 ></i>
               ) : (
                 <i
-                  className="fa-solid fa-clock-rotate-left fa-2x"
+                  className="fa-solid fa-clock-rotate-left"
                   onClick={() => changeIconColor(item.id)}
+                  style={{"padding-left": "10px"}}
                 ></i>
               )}
               <i
-                className="fa-solid fa-trash fa-2x"
+                className="fa-solid fa-trash"
                 onClick={() => deleteFromMap(item.id)}
+                style={{"padding-left": "10px"}}
               ></i></p>
               </a>
               <p>{item.address}</p>
