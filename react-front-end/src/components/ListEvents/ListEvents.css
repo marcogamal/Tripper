@@ -5,3 +5,8 @@ i {
 .fa-check {
   color: blue;
 }
+
+.events {
+  display: flex;
+  flex-direction: row;
+}

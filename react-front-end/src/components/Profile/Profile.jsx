@@ -9,7 +9,13 @@ export const Profile = () => {
   return (
     <div className="wrapper-profile">
       <div className="profile">
-        <h2>My Plans</h2>
+      {events.length > 0 ? (
+        <>
+          <b>My Plans:</b>
+        </>
+      ) : (
+        <h3>No plans to show, go create a plan!</h3>
+      )}
 
         <div className="profile1">
           <ul>
