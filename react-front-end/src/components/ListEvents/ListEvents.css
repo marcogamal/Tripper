@@ -7,3 +7,15 @@
   display: flex;
   flex-direction: row;
 }
+
+a, i {
+  text-decoration: none;
+}
+
+i:hover {
+  transform: scale(1.5);
+} 
+
+img {
+  border-radius: 25px;
+}

@@ -12,7 +12,7 @@ export const NewPlan = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Create a New Plan:
+        <b>Add Plan:</b>
         <input type="text" />
       </label>
       <input type="submit" />
