@@ -32,14 +32,8 @@ export const ListEvents = () => {
             <div className="events">
             <li key={item.id}>
               <a href={item.image} target="_blank" rel="noopener noreferrer">
-                <p>{item.name}</p>
-              </a>
-              <p>{item.address}</p>
-            
-              <p>
-                <img src={item.image_url} alt="" height="150px" width="150px" />
-              </p>
-              {item.done === false ? (
+                <p>{item.name}
+                {item.done === false ? (
                 <i
                   className="fa-solid fa-check fa-2x"
                   onClick={() => changeIconColor(item.id)}
@@ -53,7 +47,29 @@ export const ListEvents = () => {
               <i
                 className="fa-solid fa-trash fa-2x"
                 onClick={() => deleteFromMap(item.id)}
-              ></i>
+              ></i></p>
+              </a>
+              <p>{item.address}</p>
+            
+              <p>
+                <img src={item.image_url} alt="" height="150px" width="150px" />
+                {/* {item.done === false ? (
+                <i
+                  className="fa-solid fa-check fa-2x"
+                  onClick={() => changeIconColor(item.id)}
+                ></i>
+              ) : (
+                <i
+                  className="fa-solid fa-clock-rotate-left fa-2x"
+                  onClick={() => changeIconColor(item.id)}
+                ></i>
+              )}
+              <i
+                className="fa-solid fa-trash fa-2x"
+                onClick={() => deleteFromMap(item.id)}
+              ></i> */}
+              </p>
+            
               {/* <button onClick={() => changeIconColor(item.id)}>{item.done === false ? <>Done</> : <>Uncheck</>}</button> */}
               {/* <button onClick={() => deleteFromMap(item.id)}>Delete</button> */}
             </li></div>
