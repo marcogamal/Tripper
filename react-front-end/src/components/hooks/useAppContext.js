@@ -32,25 +32,12 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    Axios.get(`/api/users/plans/user/${state.user.id}`).then((res) => {
-      if (res.data.plan) {
-        dispatch({
-          type: "SET_PLANS",
-          payload: {
-            plans: res.data.plan,
-          },
-        });
-
-        Axios.get(`/api/users/plans/${res.data.plan[0].id}`).then((res) => {
-          dispatch({
-            type: "SET_EVENTS",
-            payload: {
-              events: res.data.event,
-            },
-          });
-        });
-      }
-    });
+    
+    let email = "shakespeare@lighthouse.com";
+    let password = "password";
+    
+    login(email,password);
+    
   }, []);
 
   const login = (email, password) => {
@@ -239,6 +226,7 @@ export const AppProvider = ({ children }) => {
     setLocation,
     keyword: state.keyword,
     setKeyword,
+    selectedPlan: state.selectedPlan,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

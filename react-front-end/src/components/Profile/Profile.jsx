@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { AppContext } from "../hooks/useAppContext";
-import { ListPlans } from "../ListPlans/ListPlans";
+import { ProfileEvents } from "../ProfileEvents";
 import "./Profile.css";
 
 export const Profile = () => {
-  const { events, changeIconColor, onOffRoutes, deleteFromMap } =
+  const { plans } =
     useContext(AppContext);
+
+
   return (
     <div className="wrapper-profile">
       <div className="profile">
-      {events.length > 0 ? (
+
+      {plans.length > 0 ? (
         <>
           <b>My Plans:</b>
         </>
@@ -21,25 +24,12 @@ export const Profile = () => {
           <ul>
             <div>
               <ol>
-                {events.map((item) => {
+                {plans.map((item) => {
+                  console.log("item:", item);
                   return (
                     <li key={item.id}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.name}
-                      </a>
-                      {/* <p>{item.name}</p> */}
-                      <p>{item.address}</p>
-                      <button onClick={() => changeIconColor(item.id)}>
-                        {item.done === false ? <>Done</> : <>Uncheck</>}
-                      </button>
-                      <button onClick={() => deleteFromMap(item.id)}>
-                        Delete
-                      </button>
-                      <p></p>
+                      {item.name}
+                      <ProfileEvents key={item.id} plan_id={item.id}/>
                     </li>
                   );
                 })}
@@ -48,36 +38,6 @@ export const Profile = () => {
           </ul>
         </div>
 
-        <div className="profile1">
-          <ul>
-            <div>
-              <ol>
-                {events.map((item) => {
-                  return (
-                    <li key={item.id}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {item.name}
-                      </a>
-                      {/* <p>{item.name}</p> */}
-                      <p>{item.address}</p>
-                      <button onClick={() => changeIconColor(item.id)}>
-                        {item.done === false ? <>Done</> : <>Uncheck</>}
-                      </button>
-                      <button onClick={() => deleteFromMap(item.id)}>
-                        Delete
-                      </button>
-                      <p></p>
-                    </li>
-                  );
-                })}
-              </ol>
-            </div>
-          </ul>
-        </div>
       </div>
     </div>
   );

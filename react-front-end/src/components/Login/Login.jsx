@@ -1,14 +1,10 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router";
-import ReactDOM from "react-dom";
 import { AppContext } from "../hooks/useAppContext";
 
 import "./Login.css";
-import Navbar from "../Navbar/Navbar";
 
 export default function Login({ formData, setFormData, username, password }) {
   // React States
-  const navigate = useNavigate();
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   // const [formData, setFormData] = useState({

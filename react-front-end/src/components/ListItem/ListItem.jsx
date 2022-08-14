@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { AppContext } from "../hooks/useAppContext";
 
 export const ListItem = (props) => {
-  const { addToMap } = useContext(AppContext);
+  const { addToMap, selectedPlan } = useContext(AppContext);
 
   // Add marker
   const addMarker = () => {
     addToMap({
-      id: props.results.id,
+      id: `${props.results.id}plan${selectedPlan}`,
       name: props.results.name,
       lat: props.results.latitude,
       lng: props.results.longitude,

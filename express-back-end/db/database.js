@@ -61,7 +61,7 @@ exports.getPlansForUser = getPlansForUser;
 
 const getEventsForPlan = (planId) => {
   let queryString = `SELECT * FROM events
-  WHERE events.plan_id = $1`;
+  WHERE events.plan_id = $1 ORDER BY date_time`;
   let queryParams = [planId];
 
   return pool

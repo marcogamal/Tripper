@@ -27,7 +27,7 @@ export const ListEvents = () => {
           return (
             <div className="events" key={item.id}>
               <li key={item.id}>
-                <a href={item.image} target="_blank" rel="noopener noreferrer">
+                <a href={item.image} target="_blank" rel="noopener noreferrer" className="event-name">
                   {item.name}
                 </a>
                   {item.done === false ? (

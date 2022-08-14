@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { AppContext } from "../hooks/useAppContext";
 
 const logo = require("./TripperLogo.png");
 
-export default function Navbar({ username, setFormData }) {
+export default function Navbar({ setFormData }) {
   const clearData = () => {
     return setFormData("");
   };
   const { user } = useContext(AppContext);
+
+  // For presentation purposes...Demo
+  const username = "Shakespeare";
 
   return (
     <div className="navbar">

@@ -1,5 +1,5 @@
 .fa-check {
-  color: blue;
+  
   padding-left: 5px;
 }
 
@@ -8,13 +8,23 @@
   flex-direction: row;
 }
 
-a, i {
+a {
   text-decoration: none;
+  color: blue;
+}
+
+i {
+  color: black;
 }
 
 i:hover {
   transform: scale(1.5);
 } 
+
+
+.event-name:hover {
+  transform: scale(1.5);
+}
 
 img {
   border-radius: 25px;
