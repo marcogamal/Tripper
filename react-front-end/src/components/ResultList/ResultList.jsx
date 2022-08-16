@@ -12,8 +12,8 @@ export const ResultList = () => {
 
   return (
     <div className="results-wrapper">
-      {results.length > 0 && <h3>Results:</h3>}
-      <ul>
+      {results.length > 0 && <h3 style={{"margin-left": "40px","fontFamily":"Copperplate", "font-size":"25px"}}>Results:</h3>}
+      <ul style={{"list-style": "none"}}>
         {
           // console.log("props:", props.result)
           results.map((item) => {

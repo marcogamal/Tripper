@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
@@ -41,12 +41,13 @@ export default function Navbar({ setFormData }) {
 
       {username && (
         <div className="signOut">
-          <h2>Hello, {user.name}!</h2>
+          <h3>Hi, {user.name}</h3>
           <Link to="/profile">
-            <button>User Profile</button>
+            {/* <button>User Profile</button> */}
           </Link>
           <Link to="/login">
-            <button onClick={clearData}>Log Out</button>
+            {/* <button onClick={clearData}>Log Out</button> */}
+            <b>Logout</b>
           </Link>
         </div>
       )}

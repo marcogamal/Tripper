@@ -22,12 +22,12 @@ export const ListEvents = () => {
         )}
       </p>
 
-      <ol>
+      <ol style={{}}>
         {events.map((item) => {
           return (
             <div className="events" key={item.id}>
               <li key={item.id}>
-                <a href={item.image} target="_blank" rel="noopener noreferrer" className="event-name">
+                <a href={item.image} target="_blank" rel="noopener noreferrer" style={{"font-size":"20px", "font-weight":"300"}}>
                   {item.name}
                 </a>
                   {item.done === false ? (
@@ -49,29 +49,10 @@ export const ListEvents = () => {
                   style={{"padding-left": "10px"}}
                 ></i>
                 
-                <p>{item.address}</p>
-              
+                <p>{item.address}</p>             
                 <p>
                   <img src={item.image_url} alt="" height="150px" width="150px" />
-                  {/* {item.done === false ? (
-                  <i
-                    className="fa-solid fa-check fa-2x"
-                    onClick={() => changeIconColor(item.id)}
-                  ></i>
-                ) : (
-                  <i
-                    className="fa-solid fa-clock-rotate-left fa-2x"
-                    onClick={() => changeIconColor(item.id)}
-                  ></i>
-                )}
-                <i
-                  className="fa-solid fa-trash fa-2x"
-                  onClick={() => deleteFromMap(item.id)}
-                ></i> */}
                 </p>
-              
-                {/* <button onClick={() => changeIconColor(item.id)}>{item.done === false ? <>Done</> : <>Uncheck</>}</button> */}
-                {/* <button onClick={() => deleteFromMap(item.id)}>Delete</button> */}
               </li>
             </div>
           );
