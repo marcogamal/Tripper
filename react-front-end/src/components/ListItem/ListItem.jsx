@@ -25,9 +25,9 @@ export const ListItem = (props) => {
     <li>
       {props && (
         <div className="card-item">
-          <a href={props.results.url} target="_blank" rel="noopener noreferrer" style={{"font-size":"20px", "font-weight":"300"}}>{props.results.name}</a>
-          <p style={{"font-size":"15px"}}>{props.results.address}</p>
-          <p style={{"font-size":"15px"}}>
+          <a href={props.results.url} target="_blank" rel="noopener noreferrer" style={{"fontSize":"20px", "fontWeight":"300"}}>{props.results.name}</a>
+          <p style={{"fontSize":"15px"}}>{props.results.address}</p>
+          <p style={{"fontSize":"15px"}}>
             Rating: {props.results.rating} ({props.results.review} reviews)
           </p>
           <a href={props.results.url} target="_blank" rel="noopener noreferrer">

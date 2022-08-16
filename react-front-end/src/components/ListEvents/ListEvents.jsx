@@ -18,7 +18,7 @@ export const ListEvents = () => {
           <>
           </>
         ) : (
-          <h4>You don't have anything planned yet =/</h4>
+          <b>You don't have anything planned yet =/</b>
         )}
       </p>
 
@@ -27,26 +27,26 @@ export const ListEvents = () => {
           return (
             <div className="events" key={item.id}>
               <li key={item.id}>
-                <a href={item.image} target="_blank" rel="noopener noreferrer" style={{"font-size":"20px", "font-weight":"300"}}>
+                <a href={item.image} target="_blank" rel="noopener noreferrer" style={{"fontSize":"20px", "fontWeight":"300"}}>
                   {item.name}
                 </a>
                   {item.done === false ? (
                   <i
                     className="fa-solid fa-check"
                     onClick={() => changeIconColor(item.id)}
-                    style={{"padding-left": "10px"}}
+                    style={{"paddingLeft": "10px"}}
                   ></i>
                 ) : (
                   <i
                     className="fa-solid fa-clock-rotate-left"
                     onClick={() => changeIconColor(item.id)}
-                    style={{"padding-left": "10px"}}
+                    style={{"paddingLeft": "10px"}}
                   ></i>
                 )}
                 <i
                   className="fa-solid fa-trash"
                   onClick={() => deleteFromMap(item.id)}
-                  style={{"padding-left": "10px"}}
+                  style={{"paddingLeft": "10px"}}
                 ></i>
                 
                 <p>{item.address}</p>             
